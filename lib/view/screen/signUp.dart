@@ -2,8 +2,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:second/core/constant/imageassets.dart';
 
-class SignInScreen extends StatelessWidget {
-  const SignInScreen({super.key});
+class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +15,10 @@ class SignInScreen extends StatelessWidget {
             width: double.infinity,
             height: double.infinity,
             child: Image.asset(
-              ImageAsset.onBoardingImageThree,
+              ImageAsset.onBoardingImageOne,
               fit: BoxFit.cover,
             ),
           ),
-
-          /// GRADIENT
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -34,13 +32,21 @@ class SignInScreen extends StatelessWidget {
             ),
           ),
 
+          /// BLUR EFFECT
+          // BackdropFilter(
+          //   filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
+          //   child: Container(
+          //     color: Colors.black.withOpacity(0.2),
+          //   ),
+          // ),
+
           /// GLASS CARD
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
               margin: const EdgeInsets.all(20),
               padding: const EdgeInsets.all(25),
-              height: 450,
+              height: 520,
               decoration: BoxDecoration(
                 color: Colors.white.withOpacity(0.2),
                 borderRadius: BorderRadius.circular(30),
@@ -50,7 +56,7 @@ class SignInScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     const Text(
-                      "Welcome Back",
+                      "Create Account",
                       style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
@@ -60,6 +66,11 @@ class SignInScreen extends StatelessWidget {
 
                     const SizedBox(height: 30),
 
+                    /// NAME
+                    _customField("Full Name", Icons.person),
+
+                    const SizedBox(height: 15),
+
                     /// EMAIL
                     _customField("Email", Icons.email),
 
@@ -68,23 +79,14 @@ class SignInScreen extends StatelessWidget {
                     /// PASSWORD
                     _customField("Password", Icons.lock),
 
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 15),
 
-                    /// FORGOT PASSWORD
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: TextButton(
-                        onPressed: () {},
-                        child: const Text(
-                          "Forgot Password?",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
+                    /// CONFIRM PASSWORD
+                    _customField("Confirm Password", Icons.lock_outline),
 
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 25),
 
-                    /// SIGN IN BUTTON
+                    /// SIGN UP BUTTON
                     SizedBox(
                       width: double.infinity,
                       height: 55,
@@ -99,7 +101,7 @@ class SignInScreen extends StatelessWidget {
                           elevation: 10,
                         ),
                         child: const Text(
-                          "Sign In",
+                          "Sign Up",
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -111,7 +113,7 @@ class SignInScreen extends StatelessWidget {
                     const SizedBox(height: 20),
 
                     const Text(
-                      "Or sign in with",
+                      "Or sign up with",
                       style: TextStyle(color: Colors.white70),
                     ),
 
@@ -131,18 +133,18 @@ class SignInScreen extends StatelessWidget {
 
                     const SizedBox(height: 20),
 
-                    /// SIGN UP LINK
+                    /// LOGIN LINK
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text(
-                          "Don't have an account? ",
+                          "Already have an account? ",
                           style: TextStyle(color: Colors.white),
                         ),
                         GestureDetector(
                           onTap: () {},
                           child: const Text(
-                            "Sign Up",
+                            "Sign In",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
@@ -161,7 +163,7 @@ class SignInScreen extends StatelessWidget {
     );
   }
 
-  /// INPUT FIELD
+  /// CUSTOM FIELD
   Widget _customField(String hint, IconData icon) {
     return TextField(
       style: const TextStyle(color: Colors.white),
