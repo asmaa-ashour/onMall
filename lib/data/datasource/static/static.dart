@@ -11,7 +11,12 @@ List<OnBoardingModel> onBoardingList = [
       body: "Shop with multiple secure payment methods.",
       image: ImageAsset.onBoardingImageTwo),
   OnBoardingModel(
-      title: "Fast Delivery",
-      body: "Get your orders delivered quickly to your doorstep.",
-      image: ImageAsset.onBoardingImageThree),
+    title: "Amazing Features",
+    body: "Discover all the features that make shopping with us special.",
+    image: ImageAsset.onBoardingImageThree,
+  ),
+  // OnBoardingModel(
+  //     title: "Fast Delivery",
+  //     body: "Get your orders delivered quickly to your doorstep.",
+  //     image: ImageAsset.onBoardingImageThree),
 ];

@@ -1,17 +1,12 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:second/controller/onboarding_controller.dart';
 import 'package:second/data/datasource/static/static.dart';
-import 'package:flutter/material.dart';
+import 'package:second/view/widget/onboarding/customercontent.dart';
+import 'package:second/view/widget/onboarding/customeroverlay.dart';
 
-class CustomSlideOnBoarding extends GetView<OnBoardingControllerImp> {
-  final double width;
-  final double height;
-
-  const CustomSlideOnBoarding({
-    super.key,
-    required this.width,
-    required this.height,
-  });
+class OnBoardingSlider extends GetView<OnBoardingControllerImp> {
+  const OnBoardingSlider({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,19 +16,30 @@ class CustomSlideOnBoarding extends GetView<OnBoardingControllerImp> {
         controller.onPageChanged(val);
       },
       itemCount: onBoardingList.length,
-      itemBuilder: (context, i) => Stack(
-        children: [
-          /// IMAGE
-          SizedBox(
-            width: width,
-            height: height,
-            child: Image.asset(
-              onBoardingList[i].image!,
-              fit: BoxFit.cover,
+      itemBuilder: (context, i) {
+        return Stack(
+          children: [
+            /// IMAGE
+            SizedBox(
+              width: double.infinity,
+              height: double.infinity,
+              child: Image.asset(
+                onBoardingList[i].image!,
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-        ],
-      ),
+
+            /// OVERLAY
+            const OnBoardingOverlay(),
+
+            /// CONTENT
+            OnBoardingContent(
+              title: onBoardingList[i].title!,
+              body: onBoardingList[i].body!,
+            ),
+          ],
+        );
+      },
     );
   }
 }

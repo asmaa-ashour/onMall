@@ -1,26 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:second/core/constant/routs.dart';
 
 abstract class OnBoardingController extends GetxController {
-  late PageController pageController;
   next();
   onPageChanged(int index);
 }
 
 class OnBoardingControllerImp extends OnBoardingController {
+  late PageController pageController;
+
   int currentPage = 0;
+
+  final int lastPage = 2; // عدد السلايدات - 1
+
+  @override
+  void onInit() {
+    pageController = PageController();
+    super.onInit();
+  }
+
   @override
   next() {
-    if (currentPage < 2) {
-      // عدّل العدد حسب عدد صفحات onboarding
-      currentPage++;
-      pageController.animateToPage(
-        currentPage,
-        duration: const Duration(milliseconds: 900),
+    if (currentPage == lastPage) {
+      Get.offAllNamed(AppRoute.logIn);
+    } else {
+      pageController.nextPage(
+        duration: const Duration(milliseconds: 500),
         curve: Curves.easeInOut,
       );
-    } else {
-      Get.offNamed('/logIn');
     }
   }
 
@@ -28,11 +36,5 @@ class OnBoardingControllerImp extends OnBoardingController {
   onPageChanged(int index) {
     currentPage = index;
     update();
-  }
-
-  @override
-  void onInit() {
-    pageController = PageController();
-    super.onInit();
   }
 }
