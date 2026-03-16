@@ -23,7 +23,7 @@ class OnBoardingControllerImp extends OnBoardingController {
   @override
   next() {
     if (currentPage == lastPage) {
-      Get.offAllNamed(AppRoute.logIn);
+      Get.offAllNamed(AppRoute.home);
     } else {
       pageController.nextPage(
         duration: const Duration(milliseconds: 500),
