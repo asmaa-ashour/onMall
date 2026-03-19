@@ -1,3 +1,7 @@
+import 'package:flutter/material.dart';
+import 'package:second/data/model/floorModel.dart';
+import 'package:second/data/model/storeModel.dart';
+
 import '../../../core/constant/imageassets.dart';
 import '../../model/onboardingmodel.dart';
 
@@ -20,3 +24,56 @@ List<OnBoardingModel> onBoardingList = [
   //     body: "Get your orders delivered quickly to your doorstep.",
   //     image: ImageAsset.onBoardingImageThree),
 ];
+
+/////////////////////////////////////////تجربة
+final List<FloorModel> floors = [
+  FloorModel(
+    title: "Ground Floor",
+    image: ImageAsset.onBoardingImageThree,
+    stores: [
+      StoreModel(name: "Store A", image: ImageAsset.onBoardingImageTwo),
+      StoreModel(name: "Store B", image: ImageAsset.onBoardingImageOne),
+      StoreModel(name: "Store C", image: ImageAsset.onBoardingImageOne),
+      StoreModel(name: "Store D", image: ImageAsset.onBoardingImageOne),
+      StoreModel(name: "Store E", image: ImageAsset.onBoardingImageOne),
+    ],
+  ),
+  FloorModel(
+    title: "First Floor",
+    image: ImageAsset.onBoardingImageOne,
+    // إذا ما في متاجر → رح يكون default empty list
+  ),
+  FloorModel(
+    title: "Second Floor",
+    image: ImageAsset.onBoardingImageTwo,
+    // إذا ما في متاجر → رح يكون default empty list
+  ),
+  FloorModel(
+    title: "Third Floor",
+    image: ImageAsset.onBoardingImageOne,
+    // إذا ما في متاجر → رح يكون default empty list
+  ),
+];
+///////////////////////////////////
+Map<String, List<StoreModel>> floorStores = {
+  "Ground Floor": [
+    StoreModel(
+      name: "Starbucks",
+      image: ImageAsset.onBoardingImageThree,
+    ),
+    StoreModel(
+      name: "McDonald's",
+      image: ImageAsset.onBoardingImageOne,
+    ),
+  ],
+  "First Floor": [
+    StoreModel(
+      name: "Zara",
+      image: ImageAsset.onBoardingImageTwo,
+    ),
+    StoreModel(
+      name: "H&M",
+      image: ImageAsset.onBoardingImageThree,
+    ),
+  ],
+};

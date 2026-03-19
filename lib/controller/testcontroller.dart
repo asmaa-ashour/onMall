@@ -1,7 +1,7 @@
-import 'package:firebase/core/class/statusrequest.dart';
-import 'package:firebase/core/functions/handlingdata.dart';
-import 'package:firebase/data/remote/test.dart';
 import 'package:get/get.dart';
+import 'package:second/core/class/status_request.dart';
+import 'package:second/core/function/handling_data.dart';
+import 'package:second/data/datasource/remote/test.dart';
 
 class TestController extends GetxController {
   TestData testData = TestData(Get.find());

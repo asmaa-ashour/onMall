@@ -1,60 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:second/controller/home/navigatorBar.dart';
+import 'package:second/core/constant/color.dart';
+import 'package:second/view/screen/CartPage.dart';
+import 'package:second/view/screen/FavoritesPage.dart';
+import 'package:second/view/screen/ProfilePage.dart';
 import 'package:second/view/screen/home/HomePage.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 class MainNavigationScreen extends StatelessWidget {
-  MainNavigationScreen({super.key});
-
   final BottomNavController controller = Get.put(BottomNavController());
 
   final List<Widget> pages = [
-    const HomePage(),
-    const FavoritesPage(),
-    const CartPage(),
-    const BookingsPage(),
-    const ProfilePage(),
+    HomePage(),
+    FavoritesPage(),
+    CartPage(),
+    ProfilePage(),
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => Scaffold(
-          body: pages[controller.currentIndex.value],
-          bottomNavigationBar: BottomNavigationBar(
-            currentIndex: controller.currentIndex.value,
-            onTap: controller.changePage,
-            type: BottomNavigationBarType.fixed,
-            selectedItemColor: Colors.blue,
-            unselectedItemColor: Colors.grey,
-            elevation: 10,
-            items: const [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home_outlined),
-                activeIcon: Icon(Icons.home),
-                label: "Home",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.favorite_border),
-                activeIcon: Icon(Icons.favorite),
-                label: "Favorites",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.shopping_cart_outlined),
-                activeIcon: Icon(Icons.shopping_cart),
-                label: "Cart",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.calendar_today_outlined),
-                activeIcon: Icon(Icons.calendar_today),
-                label: "Bookings",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.person_outline),
-                activeIcon: Icon(Icons.person),
-                label: "Profile",
-              ),
-            ],
-          ),
-        ));
+    return GetBuilder<BottomNavController>(
+      builder: (controller) => Scaffold(
+        body: pages[controller.currentIndex],
+        bottomNavigationBar: CurvedNavigationBar(
+          index: controller.currentIndex,
+          height: 60,
+          backgroundColor: Colors.transparent,
+          color: AppColor.prrimaryColor,
+          // Colors.blue,
+          buttonBackgroundColor: AppColor.prrimaryColor,
+          //Colors.blueAccent,
+          animationDuration: Duration(milliseconds: 300),
+          items: const [
+            Icon(Icons.home, color: Colors.white),
+            Icon(Icons.favorite, color: Colors.white),
+            Icon(Icons.shopping_cart, color: Colors.white),
+            Icon(Icons.person, color: Colors.white),
+          ],
+          onTap: (index) {
+            controller.changeIndex(index);
+          },
+        ),
+      ),
+    );
   }
 }
