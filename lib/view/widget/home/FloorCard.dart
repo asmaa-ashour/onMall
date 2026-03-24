@@ -32,7 +32,7 @@ class FloorCard extends StatelessWidget {
         tag: floor.title,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 300),
-          margin: const EdgeInsets.symmetric(horizontal: 8),
+          margin: const EdgeInsets.symmetric(horizontal: 4), // 🔥 هامش أقل
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
 
@@ -40,14 +40,14 @@ class FloorCard extends StatelessWidget {
             boxShadow: isActive
                 ? [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.4),
-                      blurRadius: 25,
-                      spreadRadius: 2,
+                      color: Colors.black.withOpacity(0.25),
+                      blurRadius: 30,
+                      offset: const Offset(0, 15),
                     )
                   ]
                 : [
-                    const BoxShadow(
-                      color: Colors.black12,
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.1),
                       blurRadius: 10,
                     )
                   ],
@@ -61,14 +61,14 @@ class FloorCard extends StatelessWidget {
                   offset: Offset(parallaxOffset * 40, 0),
                   child: Image.asset(
                     floor.image,
-                    height: 300,
+                    height: 280, // 🔥 خلي الطول كما هو
                     width: double.infinity,
                     fit: BoxFit.cover,
                   ),
                 ),
 
                 Container(
-                  height: 300,
+                  height: 280, // 🔥 خلي الطول كما هو
                   decoration: const BoxDecoration(
                     gradient: LinearGradient(
                       colors: [Colors.transparent, Colors.black87],

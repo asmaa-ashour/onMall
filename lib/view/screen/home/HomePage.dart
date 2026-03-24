@@ -101,7 +101,13 @@ class HomePage extends StatelessWidget {
             const SizedBox(height: 15),
 
             // 💎 FLOORS CARDS
-            const FloorsSection(),
+            Center(
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width *
+                    0.9, // 90% من عرض الشاشة
+                child: const FloorsSection(),
+              ),
+            ),
 
             const SizedBox(height: 30),
           ],

@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:second/data/datasource/static/static.dart';
-import 'package:second/view/widget/home/FloorCard%20.dart';
+import 'package:second/view/widget/home/FloorCard.dart';
 
 class FloorsSection extends StatefulWidget {
   const FloorsSection({super.key});
@@ -11,7 +11,10 @@ class FloorsSection extends StatefulWidget {
 }
 
 class _FloorsSectionState extends State<FloorsSection> {
-  final PageController controller = PageController(viewportFraction: 0.75);
+  final PageController controller = PageController(
+    viewportFraction: 0.55,
+    // 🔥 إضافة هذا السطر عشان يبدأ من البداية
+  );
 
   double currentPage = 0;
 
@@ -29,16 +32,18 @@ class _FloorsSectionState extends State<FloorsSection> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 320,
+      height: 280,
       child: PageView.builder(
         controller: controller,
         itemCount: floors.length,
         physics: const BouncingScrollPhysics(),
+        // 🔥 إضافة Padding لليسار عشان أول كارد يبدأ من الحافة
+        padEnds: false, // 🔥 هذا يلغي المسافات الزائدة في البداية والنهاية
         itemBuilder: (context, index) {
           double diff = currentPage - index;
 
           double scale = (1 - diff.abs() * 0.2).clamp(0.85, 1.0);
-          double translateY = 40 * diff.abs();
+          double translateY = 30 * diff.abs();
           double blur = (diff.abs() * 5).clamp(0, 5);
           double opacity = (1 - diff.abs() * 0.3).clamp(0.5, 1.0);
 
@@ -50,7 +55,6 @@ class _FloorsSectionState extends State<FloorsSection> {
                 opacity: opacity,
                 child: Stack(
                   children: [
-                    // 🔥 Blur للكاردات الخلفية
                     if (diff.abs() > 0.1)
                       Positioned.fill(
                         child: ClipRRect(
@@ -64,10 +68,9 @@ class _FloorsSectionState extends State<FloorsSection> {
                           ),
                         ),
                       ),
-
                     FloorCard(
                       floor: floors[index],
-                      isActive: diff.abs() < 0.3, // 👈 الكارد الحالي
+                      isActive: diff.abs() < 0.3,
                       parallaxOffset: diff,
                     ),
                   ],

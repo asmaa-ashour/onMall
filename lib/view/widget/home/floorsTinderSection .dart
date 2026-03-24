@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:second/data/datasource/static/static.dart';
-import 'package:second/view/widget/home/FloorCard%20.dart';
+import 'package:second/view/widget/home/FloorCard.dart';
 
 class FloorsTinderSection extends StatelessWidget {
   const FloorsTinderSection({super.key});
