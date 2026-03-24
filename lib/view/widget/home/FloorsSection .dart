@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:second/data/datasource/static/static.dart';
 import 'package:second/view/widget/home/FloorCard%20.dart';
@@ -10,7 +11,7 @@ class FloorsSection extends StatefulWidget {
 }
 
 class _FloorsSectionState extends State<FloorsSection> {
-  PageController controller = PageController(viewportFraction: 0.75);
+  final PageController controller = PageController(viewportFraction: 0.75);
 
   double currentPage = 0;
 
@@ -20,7 +21,7 @@ class _FloorsSectionState extends State<FloorsSection> {
 
     controller.addListener(() {
       setState(() {
-        currentPage = controller.page!;
+        currentPage = controller.page ?? 0;
       });
     });
   }
@@ -28,27 +29,49 @@ class _FloorsSectionState extends State<FloorsSection> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 300, // نفس ارتفاع الكارد
+      height: 320,
       child: PageView.builder(
         controller: controller,
         itemCount: floors.length,
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         itemBuilder: (context, index) {
-          // الفرق بين الكارد الحالي و الـ page
-          double difference = currentPage - index;
+          double diff = currentPage - index;
 
-          // Scale للكارد الحالي
-          double scale = (1 - difference.abs() * 0.15).clamp(0.85, 1.0);
+          double scale = (1 - diff.abs() * 0.2).clamp(0.85, 1.0);
+          double translateY = 40 * diff.abs();
+          double blur = (diff.abs() * 5).clamp(0, 5);
+          double opacity = (1 - diff.abs() * 0.3).clamp(0.5, 1.0);
 
-          // TranslateY للكارد الحالي
-          double translateY = 30 * difference.abs();
+          return Transform.translate(
+            offset: Offset(0, translateY),
+            child: Transform.scale(
+              scale: scale,
+              child: Opacity(
+                opacity: opacity,
+                child: Stack(
+                  children: [
+                    // 🔥 Blur للكاردات الخلفية
+                    if (diff.abs() > 0.1)
+                      Positioned.fill(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: BackdropFilter(
+                            filter: ImageFilter.blur(
+                              sigmaX: blur,
+                              sigmaY: blur,
+                            ),
+                            child: Container(color: Colors.transparent),
+                          ),
+                        ),
+                      ),
 
-          return Center(
-            child: Transform.translate(
-              offset: Offset(0, translateY),
-              child: Transform.scale(
-                scale: scale,
-                child: FloorCard(floor: floors[index]),
+                    FloorCard(
+                      floor: floors[index],
+                      isActive: diff.abs() < 0.3, // 👈 الكارد الحالي
+                      parallaxOffset: diff,
+                    ),
+                  ],
+                ),
               ),
             ),
           );

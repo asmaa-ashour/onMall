@@ -7,6 +7,7 @@ class AppRoute {
   static const String splash = "/splash";
   static const String lang = "/lang";
   static const String home = "/home";
+  static const String area = "/area";
   static const String mainHomePage = "/mainHomePage";
   static const String courseDetails = "/courseDetails";
   static const String recommendationScreen = "/recommendationScreen";

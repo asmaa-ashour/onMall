@@ -7,6 +7,7 @@ import 'package:second/view/screen/FavoritesPage.dart';
 import 'package:second/view/screen/ProfilePage.dart';
 import 'package:second/view/screen/home/HomePage.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:second/view/screen/home/areaScreen.dart';
 
 class MainNavigationScreen extends StatelessWidget {
   final BottomNavController controller = Get.put(BottomNavController());
@@ -15,7 +16,7 @@ class MainNavigationScreen extends StatelessWidget {
     HomePage(),
     FavoritesPage(),
     CartPage(),
-    ProfilePage(),
+    AreaScreen(),
   ];
 
   @override
@@ -36,7 +37,7 @@ class MainNavigationScreen extends StatelessWidget {
             Icon(Icons.home, color: Colors.white),
             Icon(Icons.favorite, color: Colors.white),
             Icon(Icons.shopping_cart, color: Colors.white),
-            Icon(Icons.person, color: Colors.white),
+            Icon(Icons.location_on, color: Colors.white),
           ],
           onTap: (index) {
             controller.changeIndex(index);

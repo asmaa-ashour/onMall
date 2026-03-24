@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:second/core/constant/routs.dart';
 import 'package:second/view/screen/home/HomePage.dart';
+import 'package:second/view/screen/home/areaScreen.dart';
 import 'package:second/view/screen/home/mainNavigationScreen%20.dart';
 import 'package:second/view/screen/login.dart';
 import 'package:second/view/screen/onBoarding.dart';
@@ -19,6 +20,7 @@ class AppPages {
     AppRoute.productScreen: (context) => const ProductScreen(),
     AppRoute.home: (context) => MainNavigationScreen(),
     AppRoute.mainHomePage: (context) => MainNavigationScreen(),
+    AppRoute.area: (context) => AreaScreen(),
     //   AppRoute.verfiyCode: (context) => const VerfiyCodeSignUp(),
     //   AppRoute.successSignUp: (context) => const SuccessSignUp(),
     //   AppRoute.home: (context) => const HomePagee(),

@@ -71,7 +71,7 @@ class HomePage extends StatelessWidget {
                 ),
                 child: const TextField(
                   decoration: InputDecoration(
-                    hintText: "Search stores...",
+                    hintText: "Search...",
                     border: InputBorder.none,
                     icon: Icon(Icons.search, color: Colors.grey),
                   ),
