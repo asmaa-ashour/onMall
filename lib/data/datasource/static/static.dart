@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:second/data/model/floorModel.dart';
-import 'package:second/data/model/storeModel.dart';
+// import 'package:second/data/model/storeModel.dart';
 // import 'package:second/data/model/storeModel.dart';
 
 import '../../../core/constant/imageassets.dart';

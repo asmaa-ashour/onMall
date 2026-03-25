@@ -1,29 +1,29 @@
 import 'package:get/get.dart';
-import 'package:second/data/datasource/remote/product_data.dart';
+import 'package:second/data/datasource/remote/store_data.dart';
 import '../core/class/status_request.dart';
-import '../data/model/product_model.dart';
+import '../data/model/store_model.dart';
 
-class ProductController extends GetxController {
+class StoreController extends GetxController {
   final String areaId;
-  ProductController(this.areaId);
+  StoreController(this.areaId);
 
-  List<ProductModel> products = [];
+  List<StoreModel> stores = [];
   StatusRequest statusRequest = StatusRequest.loading;
 
   @override
   void onInit() {
     super.onInit();
-    getProducts();
+    getStores();
   }
 
-  getProducts() async {
+  getStores() async {
     statusRequest = StatusRequest.loading;
     update();
 
     try {
-      final data = await ProductData().getProducts(areaId);
+      final data = await StoreData().getStores(areaId);
       if (data.isNotEmpty) {
-        products = data;
+        stores = data;
         statusRequest = StatusRequest.success;
       } else {
         statusRequest = StatusRequest.failure;

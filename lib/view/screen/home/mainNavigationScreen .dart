@@ -4,11 +4,9 @@ import 'package:second/controller/home/navigatorBar.dart';
 import 'package:second/core/constant/color.dart';
 import 'package:second/view/screen/CartPage.dart';
 import 'package:second/view/screen/FavoritesPage.dart';
-import 'package:second/view/screen/ProfilePage.dart';
 import 'package:second/view/screen/home/HomePage.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:second/view/screen/home/areaScreen.dart';
-import 'package:second/view/screen/test/category_screen.dart';
+import 'package:second/view/screen/test/area_screen.dart';
 
 class MainNavigationScreen extends StatelessWidget {
   final BottomNavController controller = Get.put(BottomNavController());
@@ -17,7 +15,7 @@ class MainNavigationScreen extends StatelessWidget {
     HomePage(),
     FavoritesPage(),
     CartPage(),
-    CategoriesPage(),
+    AreasPage(),
   ];
 
   @override

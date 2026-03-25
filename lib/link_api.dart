@@ -5,6 +5,7 @@ class AppLink {
   static const String signUp = "$serverLink/register";
   static const String login = "$serverLink/login";
   static const String test = "$serverLink/test";
+  static const String area = "$serverLink/floors/";
   static const String logout = "$serverLink/logout";
   static const String resend = "$serverLink/resend";
   static const String verifycodessignup = "$serverLink/verifyOtp";

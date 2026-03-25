@@ -1,37 +1,19 @@
-import 'dart:ui';
-
 class AreaModel {
-  final String name;
-  final String imageUrl;
-  final bool isImageLeft;
-  final List<Color> gradientColors;
+  final String id;
+  final String title;
+  final String image;
 
   AreaModel({
-    required this.name,
-    required this.imageUrl,
-    required this.isImageLeft,
-    required this.gradientColors,
+    required this.id,
+    required this.title,
+    required this.image,
   });
 
-  // من JSON
   factory AreaModel.fromJson(Map<String, dynamic> json) {
     return AreaModel(
-      name: json['name'],
-      imageUrl: json['imageUrl'],
-      isImageLeft: json['isImageLeft'],
-      gradientColors: (json['gradientColors'] as List)
-          .map((color) => Color(color))
-          .toList(),
+      id: json['id'].toString(),
+      title: json['title'] ?? '',
+      image: json['image'] ?? 'assets/images/default.jpg',
     );
-  }
-
-  // إلى JSON
-  Map<String, dynamic> toJson() {
-    return {
-      'name': name,
-      'imageUrl': imageUrl,
-      'isImageLeft': isImageLeft,
-      'gradientColors': gradientColors.map((e) => e.value).toList(),
-    };
   }
 }

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:second/view/screen/test/store_page.dart';
 
 class CategoryCard extends StatefulWidget {
+  final String id;
   final String title;
   final String image;
   final bool isLeft;
 
   const CategoryCard({
     super.key,
+    required this.id,
     required this.title,
     required this.image,
     required this.isLeft,
@@ -23,7 +26,20 @@ class _CategoryCardState extends State<CategoryCard> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTapDown: (_) => setState(() => isPressed = true),
-      onTapUp: (_) => setState(() => isPressed = false),
+      onTapUp: (_) {
+        setState(() => isPressed = false);
+
+        // 🔥 هون بنفتح صفحة المتاجر
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => StoresPage(
+              areaId: widget.id, // لازم تضيف id للـ AreaModel
+              areaName: widget.title,
+            ),
+          ),
+        );
+      },
       onTapCancel: () => setState(() => isPressed = false),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),

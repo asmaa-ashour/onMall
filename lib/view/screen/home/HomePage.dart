@@ -105,7 +105,7 @@ class HomePage extends StatelessWidget {
               child: SizedBox(
                 width: MediaQuery.of(context).size.width *
                     0.9, // 90% من عرض الشاشة
-                child: const FloorsSection(),
+                child: FloorsSection(),
               ),
             ),
 
@@ -115,25 +115,25 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-
-  // 💡 Category Widget
-  static Widget _categoryItem(String title, IconData icon) {
-    return Container(
-      width: 100,
-      margin: const EdgeInsets.only(left: 16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(15),
-        boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 8)],
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(icon, size: 30),
-          const SizedBox(height: 8),
-          Text(title),
-        ],
-      ),
-    );
-  }
 }
+  // // 💡 Category Widget
+  // static Widget _categoryItem(String title, IconData icon) {
+  //   return Container(
+  //     width: 100,
+  //     margin: const EdgeInsets.only(left: 16),
+  //     decoration: BoxDecoration(
+  //       color: Colors.white,
+  //       borderRadius: BorderRadius.circular(15),
+  //       boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 8)],
+  //     ),
+  //     child: Column(
+  //       mainAxisAlignment: MainAxisAlignment.center,
+  //       children: [
+  //         Icon(icon, size: 30),
+  //         const SizedBox(height: 8),
+  //         Text(title),
+  //       ],
+  //     ),
+  //   );
+  // }
+
