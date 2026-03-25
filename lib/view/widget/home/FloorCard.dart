@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:second/data/model/floorModel.dart';
 import 'package:second/view/screen/floor_details_page.dart';
+import 'package:second/view/screen/home/areaScreen.dart';
 
 class FloorCard extends StatelessWidget {
   final FloorModel floor;
@@ -21,10 +22,10 @@ class FloorCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => FloorDetailsPage(
-              floorTitle: floor.title,
-              stores: floor.stores,
-            ),
+            builder: (_) => AreaScreen(
+                // floorTitle: floor.title,
+                // stores: floor.stores,
+                ),
           ),
         );
       },

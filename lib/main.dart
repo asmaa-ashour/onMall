@@ -77,13 +77,18 @@ class MyApp extends StatelessWidget {
       translations: Translation(),
       debugShowCheckedModeBanner: false,
       locale: controller.language,
-      theme: controller.appTheme,
+      // theme: controller.appTheme,
       // theme: ThemeData(
       //   textTheme: const TextTheme(
       //       headlineMedium:
       //           TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
       //   primarySwatch: Colors.blue,
       // ),
+      theme: ThemeData(
+        primarySwatch: Colors.purple,
+        fontFamily: 'Poppins',
+        useMaterial3: true,
+      ),
       initialRoute: AppPages.initial,
       routes: AppPages.routes,
     );

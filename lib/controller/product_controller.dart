@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:second/data/model/product_model.dart';
 
 class ProductController extends GetxController {
-  final product = Product.mock().obs;
+  final product = ProductModel.mock().obs;
   var isLoading = false.obs;
   var hasError = false.obs;
 

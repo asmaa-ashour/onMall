@@ -1,3 +1,5 @@
+import 'package:second/data/model/store_model.dart';
+
 import 'storeModel.dart';
 
 class FloorModel {

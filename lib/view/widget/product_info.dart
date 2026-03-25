@@ -4,7 +4,7 @@ import 'package:second/core/constant/app_constants.dart';
 import 'package:second/data/model/product_model.dart';
 
 class ProductInfo extends StatelessWidget {
-  final Product product;
+  final ProductModel product;
 
   const ProductInfo({
     super.key,
@@ -33,7 +33,7 @@ class ProductInfo extends StatelessWidget {
         ],
         const SizedBox(height: AppDimens.small),
         Text(
-          product.price,
+          product.price as String,
           style: AppTextStyles.productPrice,
         ),
         const SizedBox(height: AppDimens.medium),

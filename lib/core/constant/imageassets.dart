@@ -13,4 +13,9 @@ class ImageAsset {
   static const String signUpfirstImage = "$rootImages/first.jpeg";
   static String succseeditinformations =
       "$rootLottie/succeseditinformation.json";
+  static String f1 = "$rootImages/f1.jpg";
+  static String f2 = "$rootImages/f2.jpg";
+  static String f3 = "$rootImages/f3.jpg";
+  static String f4 = "$rootImages/f4.jpg";
+  static String f5 = "$rootImages/f5.jpg";
 }
