@@ -12,7 +12,7 @@ class LogoControllerImp extends LogoController {
   @override
   goToOnBoarding() {
     Timer(Duration(seconds: 3), () {
-      Get.offAllNamed(AppRoute.onBoarding);
+      Get.offAllNamed(AppRoute.lang);
     });
   }
 

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:second/controller/them_controller.dart';
 import 'package:second/core/class/cacheClass%20.dart';
 import 'package:second/routs.dart';
 import 'binding/initailbinding.dart';
@@ -72,6 +73,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LocaleController controller = Get.put(LocaleController());
+    ThemeController themeController = Get.put(ThemeController());
     return GetMaterialApp(
       initialBinding: InitialBindings(),
       translations: Translation(),
@@ -84,11 +86,15 @@ class MyApp extends StatelessWidget {
       //           TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
       //   primarySwatch: Colors.blue,
       // ),
-      theme: ThemeData(
-        primarySwatch: Colors.purple,
-        fontFamily: 'Poppins',
-        useMaterial3: true,
-      ),
+      // theme: ThemeData(
+      //   primarySwatch: Colors.purple,
+      //   fontFamily: 'Poppins',
+      //   useMaterial3: true,
+      // ),
+      theme: ThemeData.light(), // أو استخدم الثيم المخصص حقك
+      darkTheme: ThemeData.dark(),
+      themeMode:
+          themeController.isDarkMode.value ? ThemeMode.dark : ThemeMode.light,
       initialRoute: AppPages.initial,
       routes: AppPages.routes,
     );

@@ -9,6 +9,7 @@ class AppColor {
   static const Color thirdColor = Color(0xff2B0F14);
   static const Color fourColor = Color(0xff40c4ffff);
   static const Color black = Color(0xffA0A21);
+  static const Color sun = Colors.amber;
 
   static const Color primaryColor = Color(0xff8B5E3C); // اللون البرغندي/البني
   static const Color backgroundColor = Colors.white;

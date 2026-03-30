@@ -5,12 +5,12 @@ import 'color.dart';
 ThemeData themeEnglish = ThemeData(
   fontFamily: "PlayfairDisplay",
   floatingActionButtonTheme:
-  FloatingActionButtonThemeData(backgroundColor: AppColor.secondColor),
+      FloatingActionButtonThemeData(backgroundColor: AppColor.secondColor),
   appBarTheme: AppBarTheme(
     centerTitle: true,
     elevation: 0,
     iconTheme: IconThemeData(color: AppColor.secondColor),
-    titleTextStyle:const  TextStyle(
+    titleTextStyle: const TextStyle(
         color: AppColor.secondColor,
         fontWeight: FontWeight.bold,
         fontFamily: "PlayfairDisplay",

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:second/controller/store_controller.dart';
 import 'package:second/core/class/status_request.dart';
+import 'package:second/core/constant/color.dart';
 import 'package:second/view/widget/test/store_card.dart';
 
 class StoresPage extends StatelessWidget {
@@ -24,7 +25,9 @@ class StoresPage extends StatelessWidget {
         builder: (_) {
           if (_.statusRequest == StatusRequest.loading) {
             return const Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                color: AppColor.prrimaryColor,
+              ),
             );
           }
 

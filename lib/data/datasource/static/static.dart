@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:second/data/model/floorModel.dart';
 // import 'package:second/data/model/storeModel.dart';
 // import 'package:second/data/model/storeModel.dart';
@@ -8,16 +9,18 @@ import '../../model/onboardingmodel.dart';
 
 List<OnBoardingModel> onBoardingList = [
   OnBoardingModel(
-      title: "Discover Products",
-      body: "Find the best products from your favorite brands easily.",
-      image: ImageAsset.onBoardingImageOne),
+    title: "onboarding_title_1".tr,
+    body: "onboarding_body_1".tr,
+    image: ImageAsset.onBoardingImageOne,
+  ),
   OnBoardingModel(
-      title: "Easy & Secure Payment",
-      body: "Shop with multiple secure payment methods.",
-      image: ImageAsset.onBoardingImageTwo),
+    title: "onboarding_title_2".tr,
+    body: "onboarding_body_2".tr,
+    image: ImageAsset.onBoardingImageTwo,
+  ),
   OnBoardingModel(
-    title: "Amazing Features",
-    body: "Discover all the features that make shopping with us special.",
+    title: "onboarding_title_3".tr,
+    body: "onboarding_body_3".tr,
     image: ImageAsset.onBoardingImageThree,
   ),
   // OnBoardingModel(

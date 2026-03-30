@@ -3,6 +3,7 @@ import 'package:second/core/constant/routs.dart';
 import 'package:second/view/screen/home/HomePage.dart';
 import 'package:second/view/screen/home/mainNavigationScreen%20.dart';
 import 'package:second/view/screen/auth/login.dart';
+import 'package:second/view/screen/language.dart';
 import 'package:second/view/screen/onBoarding.dart';
 import 'package:second/view/screen/auth/signUp.dart';
 import 'package:second/view/screen/splash.dart';
@@ -21,6 +22,7 @@ class AppPages {
     AppRoute.home: (context) => MainNavigationScreen(),
     AppRoute.mainHomePage: (context) => MainNavigationScreen(),
     AppRoute.area: (context) => AreasPage(),
+    AppRoute.lang: (context) => Language(),
     // AppRoute.product: (context) => ProductsPage(areaId: '',),
 
     //AppRoute.test: (context) => AreasPage(),

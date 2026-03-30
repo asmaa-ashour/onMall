@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:second/controller/them_controller.dart';
+import 'package:second/core/constant/color.dart';
 import 'package:second/view/widget/home/FloorsSection%20.dart';
 import 'package:second/view/widget/home/ads_section.dart';
 
@@ -7,104 +10,139 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.put(ThemeController());
+
     return Scaffold(
-      backgroundColor: const Color(0xfff5f5f5),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
         child: ListView(
           children: [
             // 🔥 HEADER
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Column(
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 5),
+                      const SizedBox(height: 5),
                       Text(
-                        "Find your store",
+                        "find_store".tr,
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
+                          color: Theme.of(context).textTheme.bodyLarge?.color,
                         ),
                       ),
                     ],
                   ),
 
-                  // Profile Icon
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black12,
-                          blurRadius: 8,
-                        )
-                      ],
-                    ),
-                    child: const Icon(Icons.person),
-                  )
+                  // 🌙 زر Dark Mode
+                  Obx(() => Container(
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).cardColor,
+                          shape: BoxShape.circle,
+                          boxShadow: [
+                            BoxShadow(
+                              color: themeController.isDarkMode.value
+                                  ? Colors.white10
+                                  : Colors.black12,
+                              blurRadius: 8,
+                            )
+                          ],
+                        ),
+                        child: IconButton(
+                          onPressed: () => themeController.toggleTheme(),
+                          icon: Icon(
+                            themeController.isDarkMode.value
+                                ? Icons.light_mode
+                                : Icons.dark_mode,
+                            color: themeController.isDarkMode.value
+                                ? AppColor.sun
+                                : AppColor.prrimaryColor,
+                          ),
+                          tooltip: themeController.isDarkMode.value
+                              ? "light_mode".tr
+                              : "dark_mode".tr,
+                        ),
+                      )),
                 ],
               ),
             ),
 
             const SizedBox(height: 20),
 
-            // 🔍 SEARCH BAR
+            // 🔍 SEARCH BAR - دعم Dark Mode
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
                 height: 50,
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Theme.of(context).cardColor,
                   borderRadius: BorderRadius.circular(15),
-                  boxShadow: const [
+                  boxShadow: [
                     BoxShadow(
-                      color: Colors.black12,
+                      color: themeController.isDarkMode.value
+                          ? Colors.white10
+                          : Colors.black12,
                       blurRadius: 10,
                     )
                   ],
                 ),
-                child: const TextField(
+                child: TextField(
+                  style: TextStyle(
+                    color: Theme.of(context).textTheme.bodyLarge?.color,
+                  ),
                   decoration: InputDecoration(
-                    hintText: "Search...",
+                    hintText: "search".tr,
+                    hintStyle: TextStyle(
+                      color: themeController.isDarkMode.value
+                          ? Colors.grey[400]
+                          : Colors.grey[600],
+                    ),
+                    prefixIcon: Icon(
+                      Icons.search,
+                      color: themeController.isDarkMode.value
+                          ? Colors.grey[400]
+                          : Colors.grey[600],
+                    ),
                     border: InputBorder.none,
-                    icon: Icon(Icons.search, color: Colors.grey),
+                    contentPadding: const EdgeInsets.symmetric(
+                      vertical: 15,
+                      horizontal: 15,
+                    ),
                   ),
                 ),
               ),
             ),
 
             const SizedBox(height: 25),
-            // 🏢 FLOORS TITLE
 
-            // 🔥 ADS
+            // 🔥 ADS SECTION
             const AdsSection(),
 
             const SizedBox(height: 30),
 
-            // const SizedBox(height: 15),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+            // عنوان Mall Floors
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(
-                "Mall Floors",
+                "mall_floors".tr,
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
+                  color: Theme.of(context).textTheme.bodyLarge?.color,
                 ),
               ),
             ),
+
             const SizedBox(height: 15),
 
             // 💎 FLOORS CARDS
             Center(
               child: SizedBox(
-                width: MediaQuery.of(context).size.width *
-                    0.9, // 90% من عرض الشاشة
+                width: MediaQuery.of(context).size.width * 0.9,
                 child: FloorsSection(),
               ),
             ),
@@ -116,24 +154,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-  // // 💡 Category Widget
-  // static Widget _categoryItem(String title, IconData icon) {
-  //   return Container(
-  //     width: 100,
-  //     margin: const EdgeInsets.only(left: 16),
-  //     decoration: BoxDecoration(
-  //       color: Colors.white,
-  //       borderRadius: BorderRadius.circular(15),
-  //       boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 8)],
-  //     ),
-  //     child: Column(
-  //       mainAxisAlignment: MainAxisAlignment.center,
-  //       children: [
-  //         Icon(icon, size: 30),
-  //         const SizedBox(height: 8),
-  //         Text(title),
-  //       ],
-  //     ),
-  //   );
-  // }
-
