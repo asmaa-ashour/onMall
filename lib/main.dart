@@ -4,6 +4,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:second/core/class/cacheClass%20.dart';
+import 'package:second/core/constant/app_theme.dart';
 import 'package:second/routs.dart';
 import 'binding/initailbinding.dart';
 import 'core/localization/changelocal.dart';
@@ -84,11 +85,14 @@ class MyApp extends StatelessWidget {
       //           TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
       //   primarySwatch: Colors.blue,
       // ),
-      theme: ThemeData(
-        primarySwatch: Colors.purple,
-        fontFamily: 'Poppins',
-        useMaterial3: true,
-      ),
+      // theme: ThemeData(
+      //   primarySwatch: Colors.purple,
+      //   fontFamily: 'Poppins',
+      //   useMaterial3: true,
+      // ),
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: ThemeMode.system, // system, light, dark
       initialRoute: AppPages.initial,
       routes: AppPages.routes,
     );

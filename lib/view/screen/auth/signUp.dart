@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:second/controller/auth/sign_up_controller.dart';
 import 'package:second/core/class/status_request.dart';
 import 'package:second/core/constant/imageassets.dart';
+import 'package:second/view/screen/auth/otp_screen.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -80,6 +81,8 @@ class SignUpScreen extends StatelessWidget {
                         child: ElevatedButton(
                           onPressed: () {
                             controller.signup();
+                            Get.to(
+                                () => OtpScreen(email: controller.email.text));
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white,

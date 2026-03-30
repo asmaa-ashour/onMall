@@ -8,7 +8,7 @@ class AppLink {
   static const String area = "$serverLink/floors/";
   static const String logout = "$serverLink/logout";
   static const String resend = "$serverLink/resend";
-  static const String verifycodessignup = "$serverLink/verifyOtp";
+  static const String verifycodessignup = "$serverLink/verify-otp";
   static const String notifications = "$serverLink/notifications";
 
   //===================== images ===========================back

@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:second/controller/theme_dark.dart';
+import 'package:second/core/constant/app_constants.dart';
+import 'package:second/core/constant/color.dart';
 import 'package:second/view/widget/home/FloorsSection%20.dart';
 import 'package:second/view/widget/home/ads_section.dart';
 
@@ -7,14 +11,15 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.put(ThemeController());
     return Scaffold(
-      backgroundColor: const Color(0xfff5f5f5),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
         child: ListView(
           children: [
             // 🔥 HEADER
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -31,36 +36,43 @@ class HomePage extends StatelessWidget {
                       ),
                     ],
                   ),
-
-                  // Profile Icon
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black12,
-                          blurRadius: 8,
-                        )
-                      ],
-                    ),
-                    child: const Icon(Icons.person),
-                  )
+                  Obx(() => Container(
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Colors.black12,
+                              blurRadius: 8,
+                            )
+                          ],
+                        ),
+                        child: IconButton(
+                          onPressed: () => themeController.toggleTheme(),
+                          icon: Icon(
+                            themeController.isDarkMode.value
+                                ? Icons.light_mode
+                                : Icons.dark_mode,
+                            color: themeController.isDarkMode.value
+                                ? Colors.amber
+                                : AppColor.prrimaryColor,
+                          ),
+                          tooltip: themeController.isDarkMode.value
+                              ? 'الوضع الفاتح'
+                              : 'الوضع الداكن',
+                        ),
+                      )),
                 ],
               ),
             ),
 
             const SizedBox(height: 20),
-
-            // 🔍 SEARCH BAR
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
                 height: 50,
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: AppColor.prrimaryColor,
                   borderRadius: BorderRadius.circular(15),
                   boxShadow: const [
                     BoxShadow(
@@ -71,9 +83,12 @@ class HomePage extends StatelessWidget {
                 ),
                 child: const TextField(
                   decoration: InputDecoration(
-                    hintText: "Search...",
+                    hintText: "Search ...",
+                    prefixIcon:
+                        Icon(Icons.search), // استخدم prefixIcon بدل icon
                     border: InputBorder.none,
-                    icon: Icon(Icons.search, color: Colors.grey),
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 15, horizontal: 15),
                   ),
                 ),
               ),
