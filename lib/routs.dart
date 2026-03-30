@@ -13,7 +13,7 @@ class AppPages {
   static const initial = '/logo';
 
   static final Map<String, Widget Function(BuildContext)> routes = {
-    AppRoute.logIn: (context) => const SignInScreen(),
+    AppRoute.logIn: (context) =>  SignInScreen(),
     AppRoute.signUp: (context) => const SignUpScreen(),
     AppRoute.logo: (context) => const LogoPge(),
     AppRoute.onBoarding: (context) => const OnBoardingScreen(),

@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:second/core/class/status_request.dart';
-import 'package:second/core/class/cacheClass%20.dart';
 import 'package:second/core/constant/imageassets.dart';
-import 'package:second/view/screen/home/HomePage.dart';
-import '../../../controller/auth/log_in_controller.dart';
+
+import '../../../controller/auth/Otp_Controller.dart';
+import '../home/HomePage.dart';
 
 
-class SignInScreen extends StatelessWidget {
-  SignInScreen({super.key});
+class OtpScreen extends StatelessWidget {
+  final String email; // تمرير الايميل من SignUpScreen
+  OtpScreen({super.key, required this.email});
 
-  // 1️⃣ Controllers للـ input
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-
-  // 2️⃣ LoginController
-  final LoginController loginController = Get.put(LoginController());
+  final TextEditingController otpController = TextEditingController();
+  final OtpController otpControllerInstance = Get.put(OtpController());
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +49,7 @@ class SignInScreen extends StatelessWidget {
             child: Container(
               margin: const EdgeInsets.all(20),
               padding: const EdgeInsets.all(25),
-              height: 450,
+              height: 400,
               decoration: BoxDecoration(
                 color: Colors.white.withOpacity(0.2),
                 borderRadius: BorderRadius.circular(30),
@@ -62,58 +59,43 @@ class SignInScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     const Text(
-                      "Welcome Back",
+                      "OTP Verification",
                       style: TextStyle(
-                        fontSize: 30,
+                        fontSize: 28,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
                     ),
+                    const SizedBox(height: 20),
+                    Text(
+                      "Enter the code sent to $email",
+                      style: const TextStyle(color: Colors.white70),
+                      textAlign: TextAlign.center,
+                    ),
                     const SizedBox(height: 30),
 
-                    /// EMAIL
-                    _customField("Email", Icons.email, emailController),
-                    const SizedBox(height: 15),
+                    /// OTP FIELD
+                    _customField("Enter OTP", Icons.lock, otpController),
+                    const SizedBox(height: 25),
 
-                    /// PASSWORD
-                    _customField("Password", Icons.lock, passwordController),
-                    const SizedBox(height: 10),
-
-                    /// SIGN IN BUTTON
+                    /// VERIFY BUTTON
                     SizedBox(
                       width: double.infinity,
                       height: 55,
-                      child: GetBuilder<LoginController>(
+                      child: GetBuilder<OtpController>(
                         builder: (_) => ElevatedButton(
                           onPressed: () async {
-                            // تسجيل الدخول
-                            await loginController.login(
-                              emailController.text.trim(),
-                              passwordController.text.trim(),
-                            );
+                            await otpControllerInstance.verifyOtp(
+                                email, otpController.text.trim());
 
-                            // التحقق من نجاح تسجيل الدخول
-                            if (loginController.statusRequest ==
+                            if (otpControllerInstance.statusRequest ==
                                     StatusRequest.success &&
-                                loginController.loginModel?.status ==
-                                    'success') {
-                              // حفظ التوكن
-                           await CacheClass.
-                              setData
-                              (
-                                key: "Token",
-                                value: loginController.loginModel!.token,
-                              );
-
-                              // الانتقال للصفحة الرئيسية
-                              Get.offAll(() => const HomePage
-                              ());
+                                otpControllerInstance.isVerified) {
+                              Get.offAll(() => const HomePage());
                             } else {
-                              // في حال فشل تسجيل الدخول
                               Get.snackbar(
                                 "Error",
-                                loginController.loginModel?.message ??
-                                    "Login failed",
+                                "Invalid OTP. Try again.",
                                 snackPosition: SnackPosition.BOTTOM,
                                 backgroundColor:
                                     Colors.red.withOpacity(0.7),
@@ -129,13 +111,13 @@ class SignInScreen extends StatelessWidget {
                             ),
                             elevation: 10,
                           ),
-                          child: loginController.statusRequest ==
+                          child: otpControllerInstance.statusRequest ==
                                   StatusRequest.loading
                               ? const CircularProgressIndicator(
                                   color: Colors.black,
                                 )
                               : const Text(
-                                  "Sign In",
+                                  "Verify",
                                   style: TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
@@ -154,7 +136,7 @@ class SignInScreen extends StatelessWidget {
     );
   }
 
-  /// INPUT FIELD
+  /// CUSTOM FIELD
   Widget _customField(
       String hint, IconData icon, TextEditingController controller) {
     return TextField(
@@ -171,6 +153,7 @@ class SignInScreen extends StatelessWidget {
           borderSide: BorderSide.none,
         ),
       ),
+      keyboardType: TextInputType.number,
     );
   }
 }

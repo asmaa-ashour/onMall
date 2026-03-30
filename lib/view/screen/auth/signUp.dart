@@ -4,6 +4,9 @@ import 'package:second/controller/auth/sign_up_controller.dart';
 import 'package:second/core/class/status_request.dart';
 import 'package:second/core/constant/imageassets.dart';
 
+import '../../../controller/auth/log_in_controller.dart';
+import 'login.dart';
+
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
 
@@ -134,7 +137,11 @@ class SignUpScreen extends StatelessWidget {
                             style: TextStyle(color: Colors.white),
                           ),
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Get.to(() => SignInScreen(),binding: BindingsBuilder((){
+                                  Get.put(LoginController());
+                              }));
+                            },
                             child: const Text(
                               "Sign In",
                               style: TextStyle(

@@ -1,7 +1,7 @@
 class ImageAsset {
   static String rootLottie = "assets/lottie";
   static const String rootImages = "assets/images";
-  static const String logo = "assets/images/logo.png";
+  static const String logo = "$rootImages/logoo.png";
   static const String onBoardingImageOne = "$rootImages/1.jpg";
   //static const String logo = "$rootImages/3.png";
   static const String onBoardingImageTwo = "$rootImages/8.jpg";
