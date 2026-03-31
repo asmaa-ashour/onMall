@@ -52,7 +52,11 @@ class Language extends GetView<LocaleController> {
 
                 /// النص الرئيسي
                 Text(
+<<<<<<< HEAD
                   'choose_language'.tr,
+=======
+                  '1'.tr,
+>>>>>>> origin/feature/store_and_product
                   style: const TextStyle(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
@@ -64,6 +68,7 @@ class Language extends GetView<LocaleController> {
 
                 const SizedBox(height: 15),
 
+<<<<<<< HEAD
                 Text(
                   'select_preferred_language'.tr,
                   style: TextStyle(
@@ -73,6 +78,8 @@ class Language extends GetView<LocaleController> {
                   textAlign: TextAlign.center,
                 ),
 
+=======
+>>>>>>> origin/feature/store_and_product
                 const Spacer(flex: 1),
 
                 /// الأزرار بنفس ستايل الـ Onboarding Content

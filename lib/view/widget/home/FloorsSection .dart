@@ -10,8 +10,8 @@ import 'package:second/view/widget/home/FloorCard.dart';
 
 class FloorsSection extends StatelessWidget {
   FloorsSection({super.key});
+
   final FloorController controller = Get.put(FloorController());
-  final PageController pageController = PageController(viewportFraction: 0.55);
 
   @override
   Widget build(BuildContext context) {
@@ -25,21 +25,19 @@ class FloorsSection extends StatelessWidget {
               color: AppColor.prrimaryColor,
             ));
           }
+
           if (_.statusRequest == StatusRequest.failure) {
             return const Center(child: Text("Failed to load floors"));
           }
 
           return PageView.builder(
-            controller: pageController,
+            controller: _.pageController, // 🔥 من controller
             itemCount: _.floors.length,
             padEnds: false,
             physics: const BouncingScrollPhysics(),
             itemBuilder: (context, index) {
-              double diff = pageController.hasClients
-                  ? ((pageController.page ?? pageController.initialPage)
-                          .toDouble() -
-                      index.toDouble())
-                  : 0.0;
+              double diff = _.currentPage - index;
+
               double scale = (1 - diff.abs() * 0.2).clamp(0.85, 1.0);
               double translateY = 30 * diff.abs();
               double blur = (diff.abs() * 5).clamp(0, 5);
@@ -66,7 +64,6 @@ class FloorsSection extends StatelessWidget {
     );
   }
 }
-
 /*
 class FloorsSection extends StatefulWidget {
   const FloorsSection({super.key});

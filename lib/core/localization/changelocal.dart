@@ -15,15 +15,15 @@ class LocaleController extends GetxController {
     Get.updateLocale(locale);
   }
 
-  ThemeData appTheme = themeEnglish;
+  // ThemeData appTheme = themeEnglish;
 
-  changeLang(String langcode) {
-    Locale locale = Locale(langcode);
-    myServices.sharedPreferences.setString("lang", langcode);
-    appTheme = langcode == "ar" ? themeArabic : themeEnglish;
-    Get.changeTheme(appTheme);
-    Get.updateLocale(locale);
-  }
+  // changeLang(String langcode) {
+  //   Locale locale = Locale(langcode);
+  //   myServices.sharedPreferences.setString("lang", langcode);
+  //   appTheme = langcode == "ar" ? themeArabic : themeEnglish;
+  //   Get.changeTheme(appTheme);
+  //   Get.updateLocale(locale);
+  // }
 
   @override
   void onInit() {

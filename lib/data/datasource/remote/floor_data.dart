@@ -1,22 +1,28 @@
 import 'package:second/core/class/crud.dart';
 import 'package:second/data/model/floorModel.dart';
+import 'package:second/link_api.dart';
 
 class FloorData {
   Crud crud;
   FloorData(this.crud);
 
-  Future<List<FloorModel>> getFloors() async {
-    final responseEither = await crud
-        .getRequest("http://192.168.1.104:8050/api/getAllFloors", {}, {});
+  Future<List<FloorsModel>> getFloors() async {
+    final responseEither = await crud.getRequest(AppLink.floors, {}, {});
 
     return responseEither.fold(
-      // لو حصل خطأ → رجع قائمة فارغة
-      (l) => [],
-      // لو نجح → حول البيانات
+      (l) {
+        print("ERROR");
+        return [];
+      },
       (r) {
-        // r هنا من النوع Map
-        List floorsJson = r['floors'] ?? [];
-        return floorsJson.map((e) => FloorModel.fromJson(e)).toList();
+        print("RUNTIME TYPE: ${r.runtimeType}");
+
+        if (r is List) {
+          return r.map((e) => FloorsModel.fromJson(e)).toList();
+        } else {
+          print("NOT LIST ❌");
+          return [];
+        }
       },
     );
   }

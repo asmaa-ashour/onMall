@@ -7,6 +7,7 @@ class Translation implements Translations {
           "1": "اختر اللغة",
           "2": "اللغة الانكليزية",
           "3": "اللغة العربية ",
+<<<<<<< HEAD
 
           // Onboarding texts
           "onboarding_title_1": "اكتشف المنتجات",
@@ -47,11 +48,22 @@ class Translation implements Translations {
           "mall_floors": "طوابق المول",
           "dark_mode": "الوضع الداكن",
           "light_mode": "الوضع الفاتح",
+=======
+          "4": "استكشف المنتجات",
+          "5": "ابحث عن أفضل المنتجات من العلامات التجارية /n المفضلة بسهولة",
+          "6": "دفع سهل وآمن",
+          "7": "تسوق مع طرق دفع آمنة متعددة.",
+          "8": "ميزات مذهلة",
+          "9": "اكتشف جميع الميزات التي تجعل التسوق معنا مميزًا",
+          "10": "التالي",
+          "11": " هيانبدأ",
+>>>>>>> origin/feature/store_and_product
         },
         "en": {
           "1": "Choose Langauge",
           "2": "English",
           "3": "Arabic",
+<<<<<<< HEAD
 
           // Onboarding texts
           "onboarding_title_1": "Discover Products",
@@ -92,6 +104,16 @@ class Translation implements Translations {
           "mall_floors": "Mall Floors",
           "dark_mode": "Dark mode",
           "light_mode": "Light mode",
+=======
+          "4": "Discover Products",
+          "5": "find the best products from favorite brands easily",
+          "6": "Easy & Secure Payment",
+          "7": "Shop with multiple secure payment methods.",
+          "8": "Amazing Features",
+          "9": "Discover all the features that make shopping with us special",
+          "10": "Next",
+          "11": "Get Started",
+>>>>>>> origin/feature/store_and_product
         }
       };
 }

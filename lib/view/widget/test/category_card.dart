@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:second/view/screen/home/HomePage.dart';
 import 'package:second/view/screen/test/store_page.dart';
 
 class CategoryCard extends StatefulWidget {
@@ -33,10 +34,10 @@ class _CategoryCardState extends State<CategoryCard> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => StoresPage(
-              areaId: widget.id, // لازم تضيف id للـ AreaModel
-              areaName: widget.title,
-            ),
+            builder: (_) => HomePage(
+                // areaId: widget.id, // لازم تضيف id للـ AreaModel
+                // areaName: widget.title,
+                ),
           ),
         );
       },

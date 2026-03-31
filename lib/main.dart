@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:second/controller/them_controller.dart';
 import 'package:second/core/class/cacheClass%20.dart';
+import 'package:second/core/constant/app_theme.dart';
 import 'package:second/routs.dart';
 import 'binding/initailbinding.dart';
 import 'core/localization/changelocal.dart';
@@ -91,10 +92,16 @@ class MyApp extends StatelessWidget {
       //   fontFamily: 'Poppins',
       //   useMaterial3: true,
       // ),
+<<<<<<< HEAD
       theme: ThemeData.light(), // أو استخدم الثيم المخصص حقك
       darkTheme: ThemeData.dark(),
       themeMode:
           themeController.isDarkMode.value ? ThemeMode.dark : ThemeMode.light,
+=======
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: ThemeMode.system, // system, light, dark
+>>>>>>> origin/feature/store_and_product
       initialRoute: AppPages.initial,
       routes: AppPages.routes,
     );
