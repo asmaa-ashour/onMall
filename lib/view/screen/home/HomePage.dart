@@ -40,7 +40,7 @@ class HomePage extends StatelessWidget {
                         decoration: const BoxDecoration(
                           color: Colors.white,
                           shape: BoxShape.circle,
-                          boxShadow: const [
+                          boxShadow: [
                             BoxShadow(
                               color: Colors.black12,
                               blurRadius: 8,

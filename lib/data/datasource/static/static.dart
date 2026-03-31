@@ -24,30 +24,30 @@ List<OnBoardingModel> onBoardingList = [
 ];
 
 // /////////////////////////////////////////تجربة
-final List<FloorModel> floors = [
-  FloorModel(
-    title: "Ground Floor",
+final List<FloorsModel> floors = [
+  FloorsModel(
+    name: "Ground Floor",
     image: ImageAsset.onBoardingImageThree,
-    stores: [
-      // StoresModel(name: "Store A", image: ImageAsset.onBoardingImageTwo),
-      // StoresModel(name: "Store B", image: ImageAsset.onBoardingImageOne),
-      // StoresModel(name: "Store C", image: ImageAsset.onBoardingImageOne),
-      // StoresModel(name: "Store D", image: ImageAsset.onBoardingImageOne),
-      // StoresModel(name: "Store E", image: ImageAsset.onBoardingImageOne),
-    ],
+    // stores: [
+    //   // StoresModel(name: "Store A", image: ImageAsset.onBoardingImageTwo),
+    //   // StoresModel(name: "Store B", image: ImageAsset.onBoardingImageOne),
+    //   // StoresModel(name: "Store C", image: ImageAsset.onBoardingImageOne),
+    //   // StoresModel(name: "Store D", image: ImageAsset.onBoardingImageOne),
+    //   // StoresModel(name: "Store E", image: ImageAsset.onBoardingImageOne),
+    // ],
   ),
-  FloorModel(
-    title: "First Floor",
+  FloorsModel(
+    name: "First Floor",
     image: ImageAsset.onBoardingImageOne,
     // إذا ما في متاجر → رح يكون default empty list
   ),
-  FloorModel(
-    title: "Second Floor",
+  FloorsModel(
+    name: "Second Floor",
     image: ImageAsset.onBoardingImageTwo,
     // إذا ما في متاجر → رح يكون default empty list
   ),
-  FloorModel(
-    title: "Third Floor",
+  FloorsModel(
+    name: "Third Floor",
     image: ImageAsset.onBoardingImageOne,
     // إذا ما في متاجر → رح يكون default empty list
   ),

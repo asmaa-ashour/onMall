@@ -4,7 +4,7 @@ import 'package:second/view/screen/floor_details_page.dart';
 import 'package:second/view/screen/test/area_screen.dart';
 
 class FloorCard extends StatelessWidget {
-  final FloorModel floor;
+  final FloorsModel floor;
   final bool isActive;
   final double parallaxOffset;
 
@@ -30,7 +30,7 @@ class FloorCard extends StatelessWidget {
         );
       },
       child: Hero(
-        tag: floor.title,
+        tag: floor.name ?? "",
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 300),
           margin: const EdgeInsets.symmetric(horizontal: 4), // 🔥 هامش أقل
@@ -61,7 +61,7 @@ class FloorCard extends StatelessWidget {
                 Transform.translate(
                   offset: Offset(parallaxOffset * 40, 0),
                   child: Image.asset(
-                    floor.image,
+                    floor.image ?? "assets/images/f1.jpg",
                     height: 280, // 🔥 خلي الطول كما هو
                     width: double.infinity,
                     fit: BoxFit.cover,
@@ -83,7 +83,7 @@ class FloorCard extends StatelessWidget {
                   bottom: 20,
                   left: 15,
                   child: Text(
-                    floor.title,
+                    floor.name ?? "",
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 20,

@@ -11,7 +11,7 @@ import '../services/services.dart';
 
 class Crud {
   MyServices myServices = Get.find();
-  Future<Either<StatusRequest, Map>> getRequest(
+  Future<Either<StatusRequest, List>> getRequest(
       String url, Map data, @required dynamic token) async {
     try {
       var response = await http.get(
@@ -21,15 +21,16 @@ class Crud {
         }, // Use cached token
       );
       print("$token" + "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTCRUD");
-      myServices.sharedPreferences.setString("step", "3");
+      //myServices.sharedPreferences.setString("step", "3");
       print("===============================================Language");
-      print(myServices.sharedPreferences.setString("step", "3"));
+      // print(myServices.sharedPreferences.setString("step", "3"));
       print("$response.................crud");
       if (response.statusCode == 200 || response.statusCode == 201) {
         print(response.statusCode);
         print("$response ..................................1");
         var responsebody = jsonDecode(response.body);
         print("$response ....................................2");
+        print(response.body); // هذا رح يعطيك JSON الحقيقي
 
         return Right(responsebody);
       } else {

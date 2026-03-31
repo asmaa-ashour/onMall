@@ -1,24 +1,34 @@
-import 'package:second/data/model/area_model.dart';
+class FloorsModel {
+  int? id;
+  String? name;
+  int? number;
+  int? mallID;
+  String? image;
 
-class FloorModel {
-  final String title;
-  final String image;
-  final List<AreaModel> stores;
+  FloorsModel({
+    this.id,
+    this.name,
+    this.number,
+    this.mallID,
+    this.image,
+  });
 
-  FloorModel({
-    required this.title,
-    required this.image,
-    List<AreaModel>? stores,
-  }) : stores = stores ?? [];
+  FloorsModel.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    name = json['name'];
+    number = json['number'];
+    mallID = json['mallID'];
+    image = json['image'];
+  }
 
-  factory FloorModel.fromJson(Map<String, dynamic> json) {
-    return FloorModel(
-      title: json['title'] ?? '',
-      image: json['image'] ?? 'assets/images/f1.jpg',
-      stores: json['stores'] != null
-          ? List<AreaModel>.from(
-              (json['stores'] as List).map((e) => AreaModel.fromJson(e)))
-          : [],
-    );
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['name'] = this.name;
+    data['number'] = this.number;
+    data['mallID'] = this.mallID;
+    data['image'] = this.image;
+
+    return data;
   }
 }
