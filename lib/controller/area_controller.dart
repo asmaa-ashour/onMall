@@ -32,10 +32,22 @@ class AreaController extends GetxController {
       areas = List<AreaModel>.from(
         response.map((e) => AreaModel.fromJson(e)),
       );
-
+      filteredAreas = areas;
       statusRequest = StatusRequest.success;
     }
 
+    update();
+  }
+
+  void filterAreas(String value) {
+    if (value.isEmpty) {
+      filteredAreas = areas;
+    } else {
+      filteredAreas = areas
+          .where(
+              (area) => area.name!.toLowerCase().contains(value.toLowerCase()))
+          .toList();
+    }
     update();
   }
 }

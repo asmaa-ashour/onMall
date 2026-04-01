@@ -45,6 +45,13 @@ class Search extends StatelessWidget {
                   : Colors.grey[600],
             ),
             border: InputBorder.none,
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: const BorderSide(
+                color: AppColor.prrimaryColor, // 🔹 لون الحافة وقت التركيز
+                width: 2, // ممكن يكون أغمق شوي أو أعرض
+              ),
+            ),
             contentPadding: const EdgeInsets.symmetric(
               vertical: 15,
               horizontal: 15,

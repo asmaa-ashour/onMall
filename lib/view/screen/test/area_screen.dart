@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:second/controller/area_controller.dart';
 import 'package:second/core/class/handlingdataview.dart';
-import 'package:second/view/widget/test/category_card.dart';
+import 'package:second/core/constant/color.dart';
+import 'package:second/view/widget/test/area_card.dart';
 
 class AreasPage extends StatelessWidget {
   const AreasPage({super.key});
@@ -18,21 +19,28 @@ class AreasPage extends StatelessWidget {
       body: Column(
         children: [
           // 🔹 حقل البحث
-          // Padding(
-          //   padding: const EdgeInsets.all(16.0),
-          //   child: TextField(
-          //     onChanged: (value) {
-          //       controller.filterAreas(value); // فلترة القائمة عند الكتابة
-          //     },
-          //     decoration: InputDecoration(
-          //       hintText: "Search areas...",
-          //       prefixIcon: const Icon(Icons.search),
-          //       border: OutlineInputBorder(
-          //         borderRadius: BorderRadius.circular(12),
-          //       ),
-          //     ),
-          //   ),
-          // ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: TextField(
+              onChanged: (value) {
+                controller.filterAreas(value); // فلترة القائمة عند الكتابة
+              },
+              decoration: InputDecoration(
+                hintText: "Search areas...",
+                prefixIcon: const Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(
+                    color: AppColor.prrimaryColor, // 🔹 لون الحافة وقت التركيز
+                    width: 2, // ممكن يكون أغمق شوي أو أعرض
+                  ),
+                ),
+              ),
+            ),
+          ),
 
           // 🔹 قائمة المناطق
           Expanded(
@@ -46,7 +54,7 @@ class AreasPage extends StatelessWidget {
                           itemCount: _.filteredAreas.length,
                           itemBuilder: (context, index) {
                             var item = _.filteredAreas[index];
-                            return CategoryCard(
+                            return AreaCard(
                               id: item.id.toString(),
                               title: item.name ?? "",
                               image:
