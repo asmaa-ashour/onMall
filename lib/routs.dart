@@ -20,7 +20,6 @@ class AppPages {
     // AppRoute.productScreen: (context) => const ProductsScreen(),
     AppRoute.home: (context) => MainNavigationScreen(),
     AppRoute.mainHomePage: (context) => MainNavigationScreen(),
-    
     AppRoute.area: (context) => AreasPage(),
     // AppRoute.product: (context) => ProductsPage(areaId: '',),
 
