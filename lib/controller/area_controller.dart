@@ -5,35 +5,37 @@ import 'package:second/data/datasource/remote/area_data.dart';
 import 'package:second/data/model/area_model.dart';
 
 class AreaController extends GetxController {
-  AreaData data = AreaData(Get.find());
+  AreaData areaData = AreaData(Get.find());
 
   List<AreaModel> areas = [];
-  late StatusRequest statusRequest;
+  List<AreaModel> filteredAreas = []; // المناطق بعد الفلترة
+  StatusRequest statusRequest = StatusRequest.none;
+
+  late int floorId;
+
+  @override
+  void onInit() {
+    floorId = Get.arguments["floorId"]; // 🔥 استقبلنا الطابق
+    getAreas();
+    super.onInit();
+  }
 
   getAreas() async {
     statusRequest = StatusRequest.loading;
     update();
 
-    var response = await data.getData();
+    var response = await areaData.getData(floorId);
 
-    statusRequest = handlingData(response);
+    if (response is StatusRequest) {
+      statusRequest = response;
+    } else {
+      areas = List<AreaModel>.from(
+        response.map((e) => AreaModel.fromJson(e)),
+      );
 
-    if (statusRequest == StatusRequest.success) {
-      if (response['status'] == "success") {
-        List list = response['areas'];
-
-        areas = list.map((e) => AreaModel.fromJson(e)).toList();
-      } else {
-        statusRequest = StatusRequest.failure;
-      }
+      statusRequest = StatusRequest.success;
     }
 
     update();
-  }
-
-  @override
-  void onInit() {
-    getAreas();
-    super.onInit();
   }
 }

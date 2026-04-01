@@ -4,42 +4,6 @@ import 'package:second/core/class/status_request.dart';
 import 'package:second/data/datasource/remote/floor_data.dart';
 import '../../data/model/floorModel.dart';
 
-/*
-class FloorController extends GetxController {
-  FloorData floorData = FloorData(Get.find());
-  List<FloorsModel> floors = [];
-  StatusRequest statusRequest = StatusRequest.loading;
-
-  getFloors() async {
-    statusRequest = StatusRequest.loading;
-    update();
-
-    final data = await floorData.getFloors();
-
-    print("DATA LENGTH: ${data.length}"); // 🔥 مهم
-
-    if (data.isNotEmpty) {
-      floors = data;
-
-      print("CONTROLLER FLOORS: ${floors.length}"); // 🔥 مهم
-      for (var f in floors) {
-        print(f.name);
-      }
-
-      statusRequest = StatusRequest.success;
-    } else {
-      statusRequest = StatusRequest.failure;
-    }
-
-    update();
-  }
-
-  @override
-  void onInit() {
-    getFloors();
-    super.onInit();
-  }
-}*/
 class FloorController extends GetxController {
   FloorData floorData = FloorData(Get.find());
 
@@ -55,10 +19,13 @@ class FloorController extends GetxController {
     super.onInit();
 
     pageController = PageController(viewportFraction: 0.55);
-
     pageController.addListener(() {
-      currentPage = pageController.page ?? 0;
-      update(); // 🔥 هذا السر
+      if (pageController.hasClients && pageController.positions.length == 1) {
+        currentPage = pageController.page ?? 0;
+
+        // 🔥 بس إذا تغيرت فعلياً
+        update(["page"]);
+      }
     });
 
     getFloors();

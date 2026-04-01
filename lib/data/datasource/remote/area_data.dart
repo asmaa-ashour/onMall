@@ -5,9 +5,9 @@ class AreaData {
   Crud crud;
   AreaData(this.crud);
 
-  getData() async {
+  Future getData(int floorId) async {
     var response = await crud.getRequest(
-      AppLink.area + "${1}/areas",
+      AppLink.area + "$floorId",
       {},
       null,
     );

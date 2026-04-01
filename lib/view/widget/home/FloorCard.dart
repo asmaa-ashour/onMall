@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:second/data/model/floorModel.dart';
 import 'package:second/view/screen/floor_details_page.dart';
 import 'package:second/view/screen/test/area_screen.dart';
@@ -19,20 +20,22 @@ class FloorCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (_) => AreasPage(
-                // floorTitle: floor.title,
-                // stores: floor.stores,
-                ),
-          ),
+        Get.to(
+          () => const AreasPage(),
+          arguments: {
+            "floorId": floor.id,
+            "floorName": floor.name,
+          },
         );
       },
       child: Hero(
         tag: floor.name ?? "",
         child: AnimatedContainer(
-          duration: const Duration(milliseconds: 300),
+          duration: const Duration(
+            milliseconds: 400,
+          ),
+
+          curve: Curves.easeOut,
           margin: const EdgeInsets.symmetric(horizontal: 4), // 🔥 هامش أقل
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
@@ -60,12 +63,19 @@ class FloorCard extends StatelessWidget {
                 // 🔥 Parallax للصورة
                 Transform.translate(
                   offset: Offset(parallaxOffset * 40, 0),
-                  child: Image.asset(
-                    floor.image ?? "assets/images/f1.jpg",
-                    height: 280, // 🔥 خلي الطول كما هو
-                    width: double.infinity,
-                    fit: BoxFit.cover,
-                  ),
+                  child: floor.imageUrl != null
+                      ? Image.network(
+                          floor.imageUrl!,
+                          height: 280,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                        )
+                      : Image.asset(
+                          "assets/images/f1.jpg",
+                          height: 280,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                        ),
                 ),
 
                 Container(

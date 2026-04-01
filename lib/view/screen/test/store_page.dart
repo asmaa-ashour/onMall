@@ -1,17 +1,17 @@
-<<<<<<< HEAD
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:second/controller/store_controller.dart';
-import 'package:second/core/class/status_request.dart';
-import 'package:second/core/constant/color.dart';
-import 'package:second/view/widget/test/store_card.dart';
-=======
+// <<<<<<< HEAD
+// import 'package:flutter/material.dart';
+// import 'package:get/get.dart';
+// import 'package:second/controller/store_controller.dart';
+// import 'package:second/core/class/status_request.dart';
+// import 'package:second/core/constant/color.dart';
+// import 'package:second/view/widget/test/store_card.dart';
+// =======
 // import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
 // import 'package:second/controller/store_controller.dart';
 // import 'package:second/core/class/status_request.dart';
 // import 'package:second/view/widget/test/store_card.dart';
->>>>>>> origin/feature/store_and_product
+// >>>>>>> origin/feature/store_and_product
 
 // class StoresPage extends StatelessWidget {
 //   final String areaId;
@@ -27,19 +27,19 @@ import 'package:second/view/widget/test/store_card.dart';
 //   Widget build(BuildContext context) {
 //     final controller = Get.put(StoreController(areaId));
 
-<<<<<<< HEAD
-    return Scaffold(
-      appBar: AppBar(title: Text(areaName)),
-      body: GetBuilder<StoreController>(
-        builder: (_) {
-          if (_.statusRequest == StatusRequest.loading) {
-            return const Center(
-              child: CircularProgressIndicator(
-                color: AppColor.prrimaryColor,
-              ),
-            );
-          }
-=======
+// <<<<<<< HEAD
+//     return Scaffold(
+//       appBar: AppBar(title: Text(areaName)),
+//       body: GetBuilder<StoreController>(
+//         builder: (_) {
+//           if (_.statusRequest == StatusRequest.loading) {
+//             return const Center(
+//               child: CircularProgressIndicator(
+//                 color: AppColor.prrimaryColor,
+//               ),
+//             );
+//           }
+// =======
 //     return Scaffold(
 //       appBar: AppBar(title: Text(areaName)),
 //       body: GetBuilder<StoreController>(
@@ -49,7 +49,7 @@ import 'package:second/view/widget/test/store_card.dart';
 //               child: CircularProgressIndicator(),
 //             );
 //           }
->>>>>>> origin/feature/store_and_product
+// >>>>>>> origin/feature/store_and_product
 
 //           if (_.statusRequest == StatusRequest.failure) {
 //             return const Center(

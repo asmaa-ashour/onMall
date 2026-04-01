@@ -18,18 +18,7 @@ class AppPages {
     AppRoute.onBoarding: (context) => const OnBoardingScreen(),
     AppRoute.home: (context) => MainNavigationScreen(),
     AppRoute.mainHomePage: (context) => MainNavigationScreen(),
-<<<<<<< HEAD
-    AppRoute.area: (context) => AreasPage(),
-    AppRoute.lang: (context) => Language(),
-    // AppRoute.product: (context) => ProductsPage(areaId: '',),
-
-    //AppRoute.test: (context) => AreasPage(),
-    //   AppRoute.verfiyCode: (context) => const VerfiyCodeSignUp(),
-    //   AppRoute.successSignUp: (context) => const SuccessSignUp(),
-    //   AppRoute.home: (context) => const HomePagee(),
-=======
-    AppRoute.area: (context) => const AreasPage(),
+    // AppRoute.area: (context) => const AreasPage(),
     AppRoute.lang: (context) => const Language(),
->>>>>>> origin/feature/store_and_product
   };
 }
