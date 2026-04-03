@@ -55,13 +55,14 @@ class AreasPage extends StatelessWidget {
                           itemBuilder: (context, index) {
                             var item = _.filteredAreas[index];
                             return AreaCard(
-                              id: item.id.toString(),
+                              id: item.id!, // int
                               title: item.name ?? "",
                               image:
                                   item.media != null && item.media!.isNotEmpty
                                       ? item.media![0].url ?? ""
                                       : "assets/images/f1.jpg",
                               isLeft: index % 2 == 0,
+                              usageType: item.usageType ?? "", // 🔥 هذا
                             );
                           },
                         ),

@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:second/view/screen/home/HomePage.dart';
+import 'package:second/view/screen/test/dynamic_Details_Page%20.dart';
 
-class AreaCard extends StatefulWidget {
-  final String id;
+class AreaCard extends StatelessWidget {
+  final int id;
   final String title;
   final String image;
   final bool isLeft;
+  final String usageType; // جديد
 
   const AreaCard({
     super.key,
@@ -13,76 +16,67 @@ class AreaCard extends StatefulWidget {
     required this.title,
     required this.image,
     required this.isLeft,
+    required this.usageType,
   });
 
   @override
-  State<AreaCard> createState() => _AreaCardCardState();
-}
-
-class _AreaCardCardState extends State<AreaCard> {
-  bool isPressed = false;
-
-  @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTapDown: (_) => setState(() => isPressed = true),
-      onTapUp: (_) {
-        setState(() => isPressed = false);
-
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (_) => HomePage(),
-          ),
-        );
-      },
-      onTapCancel: () => setState(() => isPressed = false),
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-        height: 70,
-        transform: Matrix4.identity()..scale(isPressed ? 0.97 : 1.0),
-        decoration: BoxDecoration(
-          color: const Color(0xffe9e1d7),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+      child: Material(
+        borderRadius: BorderRadius.circular(25),
+        color: const Color(0xffe9e1d7),
+        child: InkWell(
           borderRadius: BorderRadius.circular(25),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.08),
-              blurRadius: 15,
-              offset: const Offset(0, 8),
-            )
-          ],
-        ),
-        child: Row(
-          children: [
-            if (widget.isLeft) _buildImageLeft(),
+          onTap: () {
+            Get.to(() => const DynamicDetailsPage(), arguments: {
+              "areaId": id, // ✅ صار جاهز
+              "type": usageType, // 🔥 مهم (لازم تمرريه كمان)
+              "name": title,
+            });
+          },
+          child: Container(
+            height: 70,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(25),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.08),
+                  blurRadius: 15,
+                  offset: const Offset(0, 8),
+                )
+              ],
+            ),
+            child: Row(
+              children: [
+                if (isLeft) _buildImageLeft(),
 
-            /// 🔥 النص
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 16), // ✅ رجعنا البادينغ
-                child: Align(
-                  alignment: widget.isLeft
-                      ? Alignment.centerLeft
-                      : Alignment.centerRight, // 🔥 يلزق حسب الاتجاه
-                  child: Text(
-                    widget.title,
-                    textAlign: widget.isLeft ? TextAlign.left : TextAlign.right,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xff3a2f2a),
+                /// 🔥 النص
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Align(
+                      alignment:
+                          isLeft ? Alignment.centerLeft : Alignment.centerRight,
+                      child: Text(
+                        title,
+                        textAlign: isLeft ? TextAlign.left : TextAlign.right,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xff3a2f2a),
+                        ),
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ),
 
-            if (!widget.isLeft) _buildImageRight(),
-          ],
+                if (!isLeft) _buildImageRight(),
+              ],
+            ),
+          ),
         ),
       ),
     );
@@ -116,9 +110,9 @@ class _AreaCardCardState extends State<AreaCard> {
 
   /// 🔥 دعم network + asset
   Widget _buildImage() {
-    return widget.image.startsWith("http")
+    return image.startsWith("http")
         ? Image.network(
-            widget.image,
+            image,
             width: 120,
             height: double.infinity,
             fit: BoxFit.cover,
@@ -132,7 +126,7 @@ class _AreaCardCardState extends State<AreaCard> {
             },
           )
         : Image.asset(
-            widget.image,
+            image,
             width: 120,
             height: double.infinity,
             fit: BoxFit.cover,

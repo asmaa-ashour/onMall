@@ -1,13 +1,13 @@
 import 'package:second/core/class/crud.dart';
 import 'package:second/link_api.dart';
 
-class StoreData {
+class ServiceData {
   Crud crud;
-  StoreData(this.crud);
+  ServiceData(this.crud);
 
   Future getData(int areaId) async {
     var response = await crud.getRequest(
-      AppLink.store + "$areaId", // 🔥 حسب API تبعك
+      AppLink.service + "$areaId", // 🔥 حسب API
       {},
       null,
     );

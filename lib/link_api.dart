@@ -6,6 +6,8 @@ class AppLink {
   static const String login = "$serverLink/login";
   static const String test = "$serverLink/test";
   static const String area = "$serverLink/areasInFloor/";
+  static const String service = "$serverLink/getServiceAreas/";
+  static const String store = "$serverLink/getStoreAreas/";
   static const String floors = "$serverLink/floors";
   static const String logout = "$serverLink/logout";
   static const String resend = "$serverLink/resend";

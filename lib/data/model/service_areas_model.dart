@@ -1,4 +1,4 @@
-class StoreModel {
+class ServiceAreasModel {
   int? id;
   String? name;
   int? number;
@@ -13,7 +13,7 @@ class StoreModel {
   Null? deletedAt;
   List<Media>? media;
 
-  StoreModel(
+  ServiceAreasModel(
       {this.id,
       this.name,
       this.number,
@@ -28,7 +28,7 @@ class StoreModel {
       this.deletedAt,
       this.media});
 
-  StoreModel.fromJson(Map<String, dynamic> json) {
+  ServiceAreasModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     number = json['number'];
