@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:second/core/constant/routs.dart';
@@ -9,8 +8,8 @@ abstract class SettingPageController extends GetxController {
   // deletAccountButton();
   // logoutButton();
   // changhThem();
-  goToHotelPage();
-  goToResturantPage();
+  // goToHotelPage();
+  goToNotification();
   goToChargingPage();
 }
 
@@ -50,8 +49,23 @@ class SettingPageControllerImp extends SettingPageController {
   }
 
   @override
+  goToLanguage() {
+    Get.toNamed(AppRoute.lang);
+  }
+
+  @override
   goToPersonalProfile() {
     Get.toNamed(AppRoute.personalProfile);
+  }
+
+  @override
+  goToChargingPage() {
+    Get.toNamed(AppRoute.chargingbalance);
+  }
+
+  @override
+  goToNotification() {
+    Get.toNamed(AppRoute.notification);
   }
 
   // @override
@@ -93,19 +107,4 @@ class SettingPageControllerImp extends SettingPageController {
   //     myServices.sharedPreferences.setString("theme", "dark");
   //   }
   // }
-
-  @override
-  goToHotelPage() {
-    Get.toNamed(AppRoute.hotelPage);
-  }
-
-  @override
-  goToResturantPage() {
-    Get.toNamed(AppRoute.resturantPage);
-  }
-
-  @override
-  goToChargingPage() {
-    Get.toNamed(AppRoute.chargingbalance);
-  }
 }

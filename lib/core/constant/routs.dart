@@ -12,14 +12,14 @@ class AppRoute {
   static const String mainHomePage = "/mainHomePage";
   static const String courseDetails = "/courseDetails";
   static const String recommendationScreen = "/recommendationScreen";
-  // static const String homePage = "/homePage";
   static const successSignUp = "/successsignUp";
   static const String verfiyCode = "/verfiycode";
   static const String forgetPassword = "/forgetPassword";
   static const String profileScreen = "/profileScreen";
   static const String course = "/course";
-  static const String Test = "/test";
+  static const String setting = "/setting";
   static const String productScreen = "/productScreen";
+  static const String notification = "/notification";
 
   /////////////////////////////////////////// قديم///////////////////////
   static const String loginOrSignUp = "/loginorsignup";
