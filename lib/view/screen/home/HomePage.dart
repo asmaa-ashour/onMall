@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:second/controller/them_controller.dart';
-import 'package:second/core/constant/color.dart';
-import 'package:second/view/widget/home/FloorsSection%20.dart';
+import 'package:second/core/constant/app_constants.dart';
+import 'package:second/view/widget/home/FloorsSection .dart';
 import 'package:second/view/widget/home/ads_section.dart';
 import 'package:second/view/widget/search.dart';
 
@@ -12,43 +12,56 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeController themeController = Get.put(ThemeController());
+
+    /// 🔥 IMPORTANT
+    SizeConfig.init(context);
+
+    double s = SizeConfig.scaleFactor;
+
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
         child: ListView(
           children: [
-            // 🔥 HEADER
+            /// 🔥 HEADER
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 15),
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppDimens.medium,
+                vertical: AppDimens.medium,
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  /// 🔹 Title
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const SizedBox(height: 5),
+                      const SizedBox(height: AppDimens.small),
                       Text(
                         "find_store".tr,
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context).textTheme.bodyLarge?.color,
-                        ),
+                        style: AppTextStyles.productName.copyWith(
+                            fontSize: AppSizes.appBarTitle * s,
+                            // color: Theme.of(context).textTheme.bodyLarge?.color,
+                            color: AppColors.primaryPurple),
                       ),
                     ],
                   ),
+
+                  /// 🔹 Theme Button
                   Obx(() => Container(
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
+                        padding: const EdgeInsets.all(AppDimens.verysmall),
+                        decoration: BoxDecoration(
+                          color: AppColors.white,
                           shape: BoxShape.circle,
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black12,
-                              blurRadius: 8,
+                              blurRadius: AppDimens.small.w,
                             )
                           ],
                         ),
                         child: IconButton(
+                          iconSize: AppSizes.icon * s,
                           onPressed: () => themeController.toggleTheme(),
                           icon: Icon(
                             themeController.isDarkMode.value
@@ -56,51 +69,66 @@ class HomePage extends StatelessWidget {
                                 : Icons.dark_mode,
                             color: themeController.isDarkMode.value
                                 ? Colors.amber
-                                : AppColor.prrimaryColor,
+                                : AppColors.primaryPurple,
                           ),
-                          tooltip: themeController.isDarkMode.value
-                              ? 'الوضع الفاتح'
-                              : 'الوضع الداكن',
                         ),
                       )),
                 ],
               ),
             ),
 
-            const SizedBox(height: 20),
-            const Search(),
+            const SizedBox(height: AppDimens.small),
 
-            const SizedBox(height: 25),
+            /// 🔍 SEARCH
+            // const Padding(
+            //   padding: EdgeInsets.symmetric(
+            //     horizontal: AppDimens.small,
+            //   ),
+            // child:
+            Search(),
+            // ),
 
-            // 🔥 ADS SECTION
+            const SizedBox(height: AppDimens.large),
+
+            /// 🔥 ADS
+            // const Padding(
+            //   padding: EdgeInsets.symmetric(
+            //     horizontal: AppDimens.verysmall,
+            //   ),
+            // child:
             const AdsSection(),
+            // ),
 
-            const SizedBox(height: 30),
+            const SizedBox(height: AppDimens.medium),
 
-            // عنوان Mall Floors
+            /// 🔥 FLOORS TITLE
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppDimens.medium,
+              ),
               child: Text(
                 "mall_floors".tr,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Theme.of(context).textTheme.bodyLarge?.color,
-                ),
+                style: AppTextStyles.productName.copyWith(
+                    fontSize: AppSizes.appBarTitle * s,
+                    // color: Theme.of(context).textTheme.bodyLarge?.color,
+                    color: AppColors.primaryPurple),
               ),
             ),
 
-            const SizedBox(height: 15),
+            const SizedBox(height: AppDimens.medium),
 
-            // 💎 FLOORS CARDS
-            Center(
+            /// 💎 FLOORS
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppDimens.medium,
+              ),
               child: SizedBox(
-                width: MediaQuery.of(context).size.width * 0.9,
+                width: double.infinity,
                 child: FloorsSection(),
               ),
             ),
 
-            const SizedBox(height: 30),
+            const SizedBox(height: AppDimens.xLarge),
           ],
         ),
       ),

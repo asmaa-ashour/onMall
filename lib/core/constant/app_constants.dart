@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const Color primaryPurple = Color(0xFF8E2DE2);
-  static const Color secondaryPurple = Color(0xFF4A00E0);
+  static const Color primaryPurple = Color(0xff8B2C3A);
+  static const Color secondaryPurple = Color(0xFFD4AF37);
   static const Color white = Colors.white;
   static const Color black87 = Colors.black87;
   static const Color grey = Colors.grey;
@@ -16,6 +16,7 @@ class AppColors {
 
 class AppDimens {
   static const double small = 8.0;
+  static const double verysmall = 4.0;
   static const double medium = 16.0;
   static const double large = 24.0;
   static const double xLarge = 32.0;
@@ -23,6 +24,10 @@ class AppDimens {
   static const double buttonHeight = 50.0;
   static const double imageSize = 200.0;
   static const double borderRadius = 20.0;
+
+  /// 🔥 جديد
+  static const double cardHeight = 280.0;
+  static const double cardRadius = 20.0;
 }
 
 class AppTextStyles {
@@ -33,7 +38,7 @@ class AppTextStyles {
   );
 
   static const TextStyle productPrice = TextStyle(
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: FontWeight.w600,
     color: AppColors.primaryPurple,
   );
@@ -50,4 +55,26 @@ class AppTextStyles {
     letterSpacing: 1,
     color: AppColors.white,
   );
+}
+
+class AppSizes {
+  static const double icon = 24;
+  static const double appBarTitle = 20;
+}
+
+class SizeConfig {
+  static double screenWidth = 0;
+  static double screenHeight = 0;
+  static double scaleFactor = 1;
+
+  static void init(BuildContext context) {
+    screenWidth = MediaQuery.of(context).size.width;
+    screenHeight = MediaQuery.of(context).size.height;
+
+    scaleFactor = screenWidth / 375; // iPhone base
+  }
+}
+
+extension Responsive on num {
+  double get w => this * SizeConfig.scaleFactor;
 }

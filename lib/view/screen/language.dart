@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:second/core/constant/app_constants.dart';
 import 'package:second/core/constant/imageassets.dart';
 import 'package:second/core/constant/routs.dart';
 import 'package:second/core/localization/changelocal.dart';
@@ -9,52 +10,54 @@ class Language extends GetView<LocaleController> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig.init(context); // 🔹 init scale factor
+
     return Scaffold(
       body: Stack(
         children: [
-          /// BACKGROUND IMAGE (نفس أسلوب onboarding)
+          /// BACKGROUND IMAGE
           SizedBox(
             width: double.infinity,
             height: double.infinity,
             child: Image.asset(
-              ImageAsset.f4, // ضعي صورتك الخلفية
+              ImageAsset.f4,
               fit: BoxFit.cover,
             ),
           ),
 
-          /// OVERLAY (نفس طبقة التعتيم من onboarding)
+          /// OVERLAY
           Container(
-            color: Colors.black.withOpacity(0.3), // نفس النسبة
+            color: Colors.black.withOpacity(0.3),
           ),
 
           /// CONTENT
           SafeArea(
             child: Column(
               children: [
-                /// مساحة مرنة
                 const Spacer(flex: 1),
 
-                /// الأيقونة أو الشعار
+                /// ICON
                 Container(
                   decoration: BoxDecoration(
                     color: Colors.white.withOpacity(0.2),
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(AppDimens.borderRadius),
                   ),
-                  padding: const EdgeInsets.all(20),
+                  padding:
+                      EdgeInsets.all(AppDimens.large * SizeConfig.scaleFactor),
                   child: Icon(
                     Icons.language,
-                    size: 60,
+                    size: 60 * SizeConfig.scaleFactor,
                     color: Colors.white.withOpacity(0.9),
                   ),
                 ),
 
-                const SizedBox(height: 30),
+                SizedBox(height: 30 * SizeConfig.scaleFactor),
 
-                /// النص الرئيسي
+                /// MAIN TEXT
                 Text(
                   'choose_language'.tr,
-                  style: const TextStyle(
-                    fontSize: 28,
+                  style: TextStyle(
+                    fontSize: 28 * SizeConfig.scaleFactor,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                     letterSpacing: 1.5,
@@ -62,13 +65,12 @@ class Language extends GetView<LocaleController> {
                   textAlign: TextAlign.center,
                 ),
 
-                const SizedBox(height: 15),
-
                 const Spacer(flex: 1),
 
-                /// الأزرار بنفس ستايل الـ Onboarding Content
+                /// LANGUAGE CARDS
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: AppDimens.xLarge * SizeConfig.scaleFactor),
                   child: Column(
                     children: [
                       _buildLanguageCard(
@@ -80,7 +82,7 @@ class Language extends GetView<LocaleController> {
                           Get.offNamed(AppRoute.lang);
                         },
                       ),
-                      const SizedBox(height: 15),
+                      SizedBox(height: 15 * SizeConfig.scaleFactor),
                       _buildLanguageCard(
                         flag: '🇸🇦',
                         language: 'العربية',
@@ -115,32 +117,35 @@ class Language extends GetView<LocaleController> {
         width: double.infinity,
         decoration: BoxDecoration(
           color: Colors.white.withOpacity(0.15),
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(AppDimens.borderRadius),
           border: Border.all(
             color: Colors.white.withOpacity(0.3),
             width: 1.5,
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+          padding: EdgeInsets.symmetric(
+            vertical: AppDimens.medium * SizeConfig.scaleFactor,
+            horizontal: AppDimens.large * SizeConfig.scaleFactor,
+          ),
           child: Row(
             children: [
-              /// العلم
+              /// FLAG
               Text(
                 flag,
-                style: const TextStyle(fontSize: 35),
+                style: TextStyle(fontSize: 35 * SizeConfig.scaleFactor),
               ),
-              const SizedBox(width: 15),
+              SizedBox(width: 15 * SizeConfig.scaleFactor),
 
-              /// النصوص
+              /// TEXTS
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       language,
-                      style: const TextStyle(
-                        fontSize: 18,
+                      style: TextStyle(
+                        fontSize: 18 * SizeConfig.scaleFactor,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
@@ -148,7 +153,7 @@ class Language extends GetView<LocaleController> {
                     Text(
                       subtitle,
                       style: TextStyle(
-                        fontSize: 13,
+                        fontSize: 13 * SizeConfig.scaleFactor,
                         color: Colors.white.withOpacity(0.7),
                       ),
                     ),
@@ -156,10 +161,10 @@ class Language extends GetView<LocaleController> {
                 ),
               ),
 
-              /// السهم
+              /// ARROW
               Icon(
                 Icons.arrow_forward_ios,
-                size: 20,
+                size: 20 * SizeConfig.scaleFactor,
                 color: Colors.white.withOpacity(0.8),
               ),
             ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:second/core/constant/app_constants.dart';
 import 'package:second/core/constant/imageassets.dart';
 
 class AdsSection extends StatefulWidget {
@@ -20,30 +21,39 @@ class _AdsSectionState extends State<AdsSection> {
 
   @override
   Widget build(BuildContext context) {
+    /// 🔥 Responsive (محدود حتى ما يخرب الشكل)
+    double s = SizeConfig.scaleFactor.clamp(0.9, 1.2);
+
     return Column(
       children: [
-        // 🔥 Slider
+        /// 🔥 Slider
         CarouselSlider(
           items: ads.map((image) {
             return Container(
-              margin: const EdgeInsets.symmetric(horizontal: 8),
+              margin: const EdgeInsets.symmetric(
+                horizontal: AppDimens.small, // ❌ ثابت
+              ),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(AppDimens.borderRadius),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black12,
-                    blurRadius: 10,
+                    blurRadius: AppDimens.small,
                   ),
                 ],
               ),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(AppDimens.borderRadius),
                 child: Stack(
                   fit: StackFit.expand,
                   children: [
-                    Image.asset(image, fit: BoxFit.cover),
+                    /// 🖼 Image
+                    Image.asset(
+                      image,
+                      fit: BoxFit.cover,
+                    ),
 
-                    // Gradient
+                    /// 🌑 Gradient
                     Container(
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
@@ -57,15 +67,15 @@ class _AdsSectionState extends State<AdsSection> {
                       ),
                     ),
 
-                    // Text
-                    const Positioned(
-                      bottom: 15,
-                      left: 15,
+                    /// 📝 Text
+                    Positioned(
+                      bottom: AppDimens.medium,
+                      left: AppDimens.medium,
                       child: Text(
                         "🔥 Big Sale",
                         style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
+                          color: AppColors.white,
+                          fontSize: 16 * s, // ✅ responsive
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -76,10 +86,11 @@ class _AdsSectionState extends State<AdsSection> {
             );
           }).toList(),
           options: CarouselOptions(
-            height: 180,
+            height: AppDimens.imageSize * 0.9, // ❗ شبه ثابت (180 تقريباً)
             autoPlay: true,
             enlargeCenterPage: true,
             viewportFraction: 0.9,
+
             onPageChanged: (index, reason) {
               setState(() {
                 currentIndex = index;
@@ -88,18 +99,23 @@ class _AdsSectionState extends State<AdsSection> {
           ),
         ),
 
-        const SizedBox(height: 10),
+        const SizedBox(height: AppDimens.small),
 
-        // 💫 Dots Indicator
+        /// 💫 Dots Indicator
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: ads.asMap().entries.map((entry) {
-            return Container(
-              width: currentIndex == entry.key ? 12 : 8,
-              height: 8,
-              margin: const EdgeInsets.symmetric(horizontal: 3),
+            bool isActive = currentIndex == entry.key;
+
+            return AnimatedContainer(
+              duration: const Duration(milliseconds: 300),
+              width: isActive ? 12.0 : 8.0, // ❌ ثابت
+              height: 8.0,
+              margin: const EdgeInsets.symmetric(
+                horizontal: 3,
+              ),
               decoration: BoxDecoration(
-                color: currentIndex == entry.key ? Colors.blue : Colors.grey,
+                color: isActive ? AppColors.primaryPurple : AppColors.grey,
                 borderRadius: BorderRadius.circular(10),
               ),
             );

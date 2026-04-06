@@ -13,6 +13,7 @@ class Setting extends StatelessWidget {
     SettingPageControllerImp controller = Get.put(SettingPageControllerImp());
     return Scaffold(
       appBar: AppBar(
+        centerTitle: false,
         title: Text("setting".tr,
             style: const TextStyle(
                 fontSize: 20,

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AppColor {
   static const Color grey2 = Color(0xffBCBCBC);
   static const Color grey = Color.fromARGB(255, 160, 162, 164);
-  static const Color prrimaryColor = const Color(0xff8B2C3A);
+  static const Color prrimaryColor = Color(0xff8B2C3A);
   static const Color secondColor = Color.fromARGB(255, 65, 114, 240);
   static const Color NotiColor = Color.fromARGB(33, 10, 10, 10);
   static const Color thirdColor = Color(0xff2B0F14);
