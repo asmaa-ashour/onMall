@@ -9,7 +9,6 @@ import '../../model/onboardingmodel.dart';
 
 List<OnBoardingModel> onBoardingList = [
   OnBoardingModel(
-<<<<<<< HEAD
     title: "onboarding_title_1".tr,
     body: "onboarding_body_1".tr,
     image: ImageAsset.onBoardingImageOne,
@@ -21,17 +20,19 @@ List<OnBoardingModel> onBoardingList = [
   ),
   OnBoardingModel(
     title: "onboarding_title_3".tr,
-    body: "onboarding_body_3".tr,
-=======
-      title: '4'.tr, body: '5'.tr, image: ImageAsset.onBoardingImageOne),
-  OnBoardingModel(
-      title: '6'.tr, body: '7'.tr, image: ImageAsset.onBoardingImageTwo),
-  OnBoardingModel(
-    title: '8'.tr,
-    body: '9'.tr,
->>>>>>> origin/feature/store_and_product
+    body: "onboarding_body_3".tr, 
     image: ImageAsset.onBoardingImageThree,
-  ),
+    ),
+// =======
+//       title: '4'.tr, body: '5'.tr, image: ImageAsset.onBoardingImageOne),
+//   OnBoardingModel(
+//       title: '6'.tr, body: '7'.tr, image: ImageAsset.onBoardingImageTwo),
+//   OnBoardingModel(
+//     title: '8'.tr,
+//     body: '9'.tr,
+// >>>>>>> origin/feature/store_and_product
+//     image: ImageAsset.onBoardingImageThree,
+//   ),
   // OnBoardingModel(
   //     title: "Fast Delivery",
   //     body: "Get your orders delivered quickly to your doorstep.",

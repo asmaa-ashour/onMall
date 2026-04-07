@@ -1,12 +1,30 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:second/core/class/status_request.dart';
+import 'package:second/core/class/cacheClass%20.dart';
 import 'package:second/core/constant/imageassets.dart';
+import 'package:second/view/screen/home/HomePage.dart';
+import '../../../controller/auth/log_in_controller.dart';
 
 class SignInScreen extends StatelessWidget {
-  const SignInScreen({super.key});
+  final String? email; // البريد من OTP إذا موجود
+
+  SignInScreen({super.key, this.email});
+
+  // Controllers للـ input
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  // LoginController
+  final LoginController loginController = Get.put(LoginController());
 
   @override
   Widget build(BuildContext context) {
+    // ⬅️ عبّي البريد الإلكتروني إذا جاء من OTP
+    if (email != null) {
+      emailController.text = email!;
+    }
+
     return Scaffold(
       body: Stack(
         children: [
@@ -57,113 +75,104 @@ class SignInScreen extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
-
                     const SizedBox(height: 30),
 
-                    /// EMAIL
-                    _customField("Email", Icons.email),
-
+                    // EMAIL FIELD
+                    _customField("Email", Icons.email, emailController),
                     const SizedBox(height: 15),
 
-                    /// PASSWORD
-                    _customField("Password", Icons.lock),
-
+                    // PASSWORD FIELD
+                    _customField("Password", Icons.lock, passwordController),
                     const SizedBox(height: 10),
 
-                    /// FORGOT PASSWORD
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: TextButton(
-                        onPressed: () {},
-                        child: const Text(
-                          "Forgot Password?",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-
-                    const SizedBox(height: 20),
-
-                    /// SIGN IN BUTTON
+                    // SIGN IN BUTTON
                     SizedBox(
                       width: double.infinity,
                       height: 55,
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white,
-                          foregroundColor: Colors.black,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
+                      child: GetBuilder<LoginController>(
+                        builder: (_) => ElevatedButton(
+                       onPressed: () async {
+  // تسجيل الدخول
+  await loginController.login(
+    emailController.text.trim(),
+    passwordController.text.trim(),
+  );
+
+  // تحديث الـ GetBuilder بعد login
+  loginController.update();
+
+  // تحقق من نجاح تسجيل الدخول
+  if (loginController.statusRequest == StatusRequest.success &&
+      loginController.loginModel?.status == 'success') {
+
+    // حفظ التوكن في الكاش
+    await CacheClass.setData(
+      key: "Token",
+      value: loginController.loginModel!.token,
+    );
+
+    // التحقق من أن التوكن محفوظ
+    String? savedToken = CacheClass.getData(key: "Token");
+    print("Token stored in CacheClass: $savedToken");
+
+    // عرض SnackBar لتأكيد الحفظ
+    Get.snackbar(
+      "Login Successful",
+      "Token stored: ${savedToken ?? "No Token"}",
+      snackPosition: SnackPosition.BOTTOM,
+      backgroundColor: Colors.green.withOpacity(0.8),
+      colorText: Colors.white,
+    );
+
+    // الانتقال للصفحة الرئيسية بعد تأخير بسيط
+    await Future.delayed(const Duration(milliseconds: 150));
+    Get.offAll(() => const HomePage());
+
+  } else {
+    // فشل تسجيل الدخول
+    Get.snackbar(
+      "Error",
+      loginController.loginModel?.message ?? "Login failed",
+      snackPosition: SnackPosition.BOTTOM,
+      backgroundColor: Colors.red.withOpacity(0.7),
+      colorText: Colors.white,
+    );
+  }
+},
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.white,
+                            foregroundColor: Colors.black,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            elevation: 10,
                           ),
-                          elevation: 10,
-                        ),
-                        child: const Text(
-                          "Sign In",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          child: loginController.statusRequest == StatusRequest.loading
+                              ? const CircularProgressIndicator(color: Colors.black)
+                              : const Text(
+                                  "Sign In",
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
                         ),
                       ),
                     ),
-
-                    const SizedBox(height: 20),
-
-                    const Text(
-                      "Or sign in with",
-                      style: TextStyle(color: Colors.white70),
-                    ),
-
-                    const SizedBox(height: 15),
-
-                    /// SOCIAL LOGIN
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        _socialButton(Icons.g_mobiledata),
-                        const SizedBox(width: 20),
-                        _socialButton(Icons.apple),
-                        const SizedBox(width: 20),
-                        _socialButton(Icons.facebook),
-                      ],
-                    ),
-
-                    const SizedBox(height: 20),
-
-                    /// SIGN UP LINK
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          "Don't have an account? ",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        GestureDetector(
-                          onTap: () {},
-                          child: const Text(
-                            "Sign Up",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                        )
-                      ],
-                    )
                   ],
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
   }
 
   /// INPUT FIELD
-  Widget _customField(String hint, IconData icon) {
+  Widget _customField(String hint, IconData icon, TextEditingController controller) {
     return TextField(
+      controller: controller,
       style: const TextStyle(color: Colors.white),
       decoration: InputDecoration(
         hintText: hint,
@@ -176,19 +185,6 @@ class SignInScreen extends StatelessWidget {
           borderSide: BorderSide.none,
         ),
       ),
-    );
-  }
-
-  /// SOCIAL BUTTON
-  Widget _socialButton(IconData icon) {
-    return Container(
-      width: 50,
-      height: 50,
-      decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.2),
-        shape: BoxShape.circle,
-      ),
-      child: Icon(icon, color: Colors.white),
     );
   }
 }

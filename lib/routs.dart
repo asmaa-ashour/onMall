@@ -12,24 +12,22 @@ class AppPages {
   static const initial = '/logo';
 
   static final Map<String, Widget Function(BuildContext)> routes = {
-    AppRoute.logIn: (context) => const SignInScreen(),
+    AppRoute.logIn: (context) =>  SignInScreen(),
     AppRoute.signUp: (context) => const SignUpScreen(),
     AppRoute.logo: (context) => const LogoPge(),
     AppRoute.onBoarding: (context) => const OnBoardingScreen(),
     AppRoute.home: (context) => MainNavigationScreen(),
     AppRoute.mainHomePage: (context) => MainNavigationScreen(),
-<<<<<<< HEAD
-    AppRoute.area: (context) => AreasPage(),
-    AppRoute.lang: (context) => Language(),
+
     // AppRoute.product: (context) => ProductsPage(areaId: '',),
 
     //AppRoute.test: (context) => AreasPage(),
     //   AppRoute.verfiyCode: (context) => const VerfiyCodeSignUp(),
     //   AppRoute.successSignUp: (context) => const SuccessSignUp(),
     //   AppRoute.home: (context) => const HomePagee(),
-=======
+
     AppRoute.area: (context) => const AreasPage(),
     AppRoute.lang: (context) => const Language(),
->>>>>>> origin/feature/store_and_product
+
   };
 }

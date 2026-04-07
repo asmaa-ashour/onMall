@@ -12,11 +12,7 @@ abstract class LogoController extends GetxController {
 class LogoControllerImp extends LogoController {
   @override
   goToOnBoarding() {
-<<<<<<< HEAD
-    Timer(Duration(seconds: 3), () {
-=======
     Timer(const Duration(seconds: 3), () {
->>>>>>> origin/feature/store_and_product
       Get.offAllNamed(AppRoute.lang);
     });
   }

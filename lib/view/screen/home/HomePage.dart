@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-<<<<<<< HEAD
+
 import 'package:second/controller/them_controller.dart';
-=======
-import 'package:second/controller/theme_dark.dart';
-import 'package:second/core/constant/app_constants.dart';
->>>>>>> origin/feature/store_and_product
 import 'package:second/core/constant/color.dart';
+
 import 'package:second/view/widget/home/FloorsSection%20.dart';
 import 'package:second/view/widget/home/ads_section.dart';
 
@@ -16,10 +13,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeController themeController = Get.put(ThemeController());
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/feature/store_and_product
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
@@ -27,11 +21,7 @@ class HomePage extends StatelessWidget {
           children: [
             // 🔥 HEADER
             Padding(
-<<<<<<< HEAD
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-=======
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 15),
->>>>>>> origin/feature/store_and_product
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -44,12 +34,12 @@ class HomePage extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          color: Theme.of(context).textTheme.bodyLarge?.color,
+                          color:
+                              Theme.of(context).textTheme.bodyLarge?.color,
                         ),
                       ),
                     ],
                   ),
-<<<<<<< HEAD
 
                   // 🌙 زر Dark Mode
                   Obx(() => Container(
@@ -61,41 +51,24 @@ class HomePage extends StatelessWidget {
                               color: themeController.isDarkMode.value
                                   ? Colors.white10
                                   : Colors.black12,
-=======
-                  Obx(() => Container(
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
-                          shape: BoxShape.circle,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black12,
->>>>>>> origin/feature/store_and_product
                               blurRadius: 8,
                             )
                           ],
                         ),
                         child: IconButton(
-                          onPressed: () => themeController.toggleTheme(),
+                          onPressed: () =>
+                              themeController.toggleTheme(),
                           icon: Icon(
                             themeController.isDarkMode.value
                                 ? Icons.light_mode
                                 : Icons.dark_mode,
                             color: themeController.isDarkMode.value
-<<<<<<< HEAD
                                 ? AppColor.sun
                                 : AppColor.prrimaryColor,
                           ),
                           tooltip: themeController.isDarkMode.value
                               ? "light_mode".tr
                               : "dark_mode".tr,
-=======
-                                ? Colors.amber
-                                : AppColor.prrimaryColor,
-                          ),
-                          tooltip: themeController.isDarkMode.value
-                              ? 'الوضع الفاتح'
-                              : 'الوضع الداكن',
->>>>>>> origin/feature/store_and_product
                         ),
                       )),
                 ],
@@ -103,21 +76,14 @@ class HomePage extends StatelessWidget {
             ),
 
             const SizedBox(height: 20),
-<<<<<<< HEAD
 
-            // 🔍 SEARCH BAR - دعم Dark Mode
-=======
->>>>>>> origin/feature/store_and_product
+            // 🔍 SEARCH BAR
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Container(
                 height: 50,
                 decoration: BoxDecoration(
-<<<<<<< HEAD
                   color: Theme.of(context).cardColor,
-=======
-                  color: AppColor.prrimaryColor,
->>>>>>> origin/feature/store_and_product
                   borderRadius: BorderRadius.circular(15),
                   boxShadow: [
                     BoxShadow(
@@ -133,7 +99,6 @@ class HomePage extends StatelessWidget {
                     color: Theme.of(context).textTheme.bodyLarge?.color,
                   ),
                   decoration: InputDecoration(
-<<<<<<< HEAD
                     hintText: "search".tr,
                     hintStyle: TextStyle(
                       color: themeController.isDarkMode.value
@@ -151,14 +116,6 @@ class HomePage extends StatelessWidget {
                       vertical: 15,
                       horizontal: 15,
                     ),
-=======
-                    hintText: "Search ...",
-                    prefixIcon:
-                        Icon(Icons.search), // استخدم prefixIcon بدل icon
-                    border: InputBorder.none,
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 15, horizontal: 15),
->>>>>>> origin/feature/store_and_product
                   ),
                 ),
               ),

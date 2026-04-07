@@ -92,16 +92,12 @@ class MyApp extends StatelessWidget {
       //   fontFamily: 'Poppins',
       //   useMaterial3: true,
       // ),
-<<<<<<< HEAD
-      theme: ThemeData.light(), // أو استخدم الثيم المخصص حقك
-      darkTheme: ThemeData.dark(),
-      themeMode:
-          themeController.isDarkMode.value ? ThemeMode.dark : ThemeMode.light,
-=======
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.system, // system, light, dark
->>>>>>> origin/feature/store_and_product
+
+
+   theme: AppTheme.lightTheme,
+darkTheme: AppTheme.darkTheme,
+themeMode:
+    themeController.isDarkMode.value ? ThemeMode.dark : ThemeMode.light,
       initialRoute: AppPages.initial,
       routes: AppPages.routes,
     );

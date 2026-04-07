@@ -63,7 +63,7 @@ class OnBoardingContent extends GetView<OnBoardingControllerImp> {
             GetBuilder<OnBoardingControllerImp>(
               builder: (controller) {
                 return CustomButtonOnBoarding(
-                  title: controller.currentPage == 2 ? "Get Started" : "Next",
+                  title: controller.currentPage == 2 ? "get_started".tr: "next".tr,
                 );
               },
             )

@@ -4,6 +4,9 @@ import 'package:second/controller/auth/sign_up_controller.dart';
 import 'package:second/core/class/status_request.dart';
 import 'package:second/core/constant/imageassets.dart';
 import 'package:second/view/screen/auth/otp_screen.dart';
+import '../../../controller/auth/log_in_controller.dart';
+import 'login.dart';
+import 'otp.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -60,18 +63,14 @@ class SignUpScreen extends StatelessWidget {
                           color: Colors.white,
                         ),
                       ),
-
                       const SizedBox(height: 30),
                       _customField("Full Name", Icons.person, controller.name),
                       const SizedBox(height: 15),
-
                       _customField("Email", Icons.email, controller.email),
                       const SizedBox(height: 15),
-
                       _customField("Password", Icons.lock, controller.password),
                       const SizedBox(height: 15),
-                      _customField(
-                          "Phone Number", Icons.phone, controller.phone),
+                      _customField("Phone Number", Icons.phone, controller.phone),
                       const SizedBox(height: 25),
 
                       /// SIGN UP BUTTON
@@ -79,11 +78,31 @@ class SignUpScreen extends StatelessWidget {
                         width: double.infinity,
                         height: 55,
                         child: ElevatedButton(
-                          onPressed: () {
-                            controller.signup();
-                            Get.to(
-                                () => OtpScreen(email: controller.email.text));
-                          },
+              onPressed: () async {
+  var response = await controller.signup();
+
+  // ✅ تحقق من النوع قبل استخدام []
+  if (response is Map<String, dynamic> && response['message'] != null) {
+    Get.snackbar(
+      "Success",
+      response['message'],
+      snackPosition: SnackPosition.BOTTOM,
+      backgroundColor: Colors.green.withOpacity(0.7),
+      colorText: Colors.white,
+    );
+
+    Get.to(() => OtpScreen(email: controller.email.text));
+  } else {
+    // ❌ فشل SignUp
+    Get.snackbar(
+      "Error",
+      "Signup failed. Try again.",
+      snackPosition: SnackPosition.BOTTOM,
+      backgroundColor: Colors.red.withOpacity(0.7),
+      colorText: Colors.white,
+    );
+  }
+},
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white,
                             foregroundColor: Colors.black,
@@ -92,38 +111,16 @@ class SignUpScreen extends StatelessWidget {
                             ),
                             elevation: 10,
                           ),
-                          child:
-                              controller.statusRequest == StatusRequest.loading
-                                  ? const CircularProgressIndicator()
-                                  : const Text(
-                                      "Sign Up",
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
+                          child: controller.statusRequest == StatusRequest.loading
+                              ? const CircularProgressIndicator()
+                              : const Text(
+                                  "Sign Up",
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
                         ),
-                      ),
-
-                      const SizedBox(height: 20),
-
-                      const Text(
-                        "Or sign up with",
-                        style: TextStyle(color: Colors.white70),
-                      ),
-
-                      const SizedBox(height: 15),
-
-                      /// SOCIAL LOGIN
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          _socialButton(Icons.g_mobiledata),
-                          const SizedBox(width: 20),
-                          _socialButton(Icons.apple),
-                          const SizedBox(width: 20),
-                          _socialButton(Icons.facebook),
-                        ],
                       ),
 
                       const SizedBox(height: 20),
@@ -137,7 +134,11 @@ class SignUpScreen extends StatelessWidget {
                             style: TextStyle(color: Colors.white),
                           ),
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Get.to(() => SignInScreen(), binding: BindingsBuilder(() {
+                                Get.put(LoginController());
+                              }));
+                            },
                             child: const Text(
                               "Sign In",
                               style: TextStyle(
@@ -166,7 +167,7 @@ class SignUpScreen extends StatelessWidget {
     TextEditingController controller,
   ) {
     return TextField(
-      controller: controller, // 🔥 الربط
+      controller: controller,
       style: const TextStyle(color: Colors.white),
       decoration: InputDecoration(
         hintText: hint,
@@ -179,19 +180,6 @@ class SignUpScreen extends StatelessWidget {
           borderSide: BorderSide.none,
         ),
       ),
-    );
-  }
-
-  /// SOCIAL BUTTON
-  Widget _socialButton(IconData icon) {
-    return Container(
-      width: 50,
-      height: 50,
-      decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.2),
-        shape: BoxShape.circle,
-      ),
-      child: Icon(icon, color: Colors.white),
     );
   }
 }
