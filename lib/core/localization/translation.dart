@@ -43,8 +43,7 @@ class Translation implements Translations {
           "best_deals": "أفضل العروض",
 
           "find_store": "ابحث عن متجرك",
-          "search": "بحث...",
-          "mall_floors": "طوابق المول",
+
           "dark_mode": "الوضع الداكن",
           "light_mode": "الوضع الفاتح",
           "4": "استكشف المنتجات",
@@ -55,12 +54,17 @@ class Translation implements Translations {
           "9": "اكتشف جميع الميزات التي تجعل التسوق معنا مميزًا",
           "10": "التالي",
           "11": " هيانبدأ",
+          "personal_profile": "الملف الشخصي",
+          "choose_language": "اختر اللغة",
+          "edit_personal_profile": "تعديل الملف الشخصي",
+          "charging_balance": "شحن الرصيد",
+          "notification": "الإشعارات",
+          "setting": "الإعدادات",
         },
         "en": {
           "1": "Choose Langauge",
           "2": "English",
           "3": "Arabic",
-
 
           // Onboarding texts
           "onboarding_title_1": "Discover Products",
@@ -97,8 +101,6 @@ class Translation implements Translations {
           "best_deals": "Best deals",
 
           "find_store": "Find your store",
-          "search": "Search...",
-          "mall_floors": "Mall Floors",
           "dark_mode": "Dark mode",
           "light_mode": "Light mode",
 
@@ -111,6 +113,12 @@ class Translation implements Translations {
           "10": "Next",
           "11": "Get Started",
 
+          "personal_profile": "Personal Profile",
+          "choose_language": "Choose language",
+          "edit_personal_profile": "Edit Personal Profile",
+          "charging_balance": "Charging Balance",
+          "notification": "Notifications",
+          "setting": "Settings",
         }
       };
 }

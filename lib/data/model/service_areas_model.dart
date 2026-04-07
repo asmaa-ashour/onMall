@@ -1,10 +1,10 @@
-class AreaModel {
+class ServiceAreasModel {
   int? id;
   String? name;
   int? number;
   int? floorID;
-  String? planableType;
-  int? planableId;
+  Null? planableType;
+  Null? planableId;
   String? usageType;
   String? category;
   int? maxCapacity;
@@ -13,7 +13,7 @@ class AreaModel {
   Null? deletedAt;
   List<Media>? media;
 
-  AreaModel(
+  ServiceAreasModel(
       {this.id,
       this.name,
       this.number,
@@ -28,7 +28,7 @@ class AreaModel {
       this.deletedAt,
       this.media});
 
-  AreaModel.fromJson(Map<String, dynamic> json) {
+  ServiceAreasModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     number = json['number'];

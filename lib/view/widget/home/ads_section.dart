@@ -13,12 +13,9 @@ class _AdsSectionState extends State<AdsSection> {
   int currentIndex = 0;
 
   final List<String> ads = [
-    // "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da",
-    // "https://images.unsplash.com/photo-1580910051074-3eb694886505",
-    // "https://images.unsplash.com/photo-1607083206968-13611e3d76db",
-    ImageAsset.onBoardingImageOne,
-    ImageAsset.onBoardingImageTwo,
-    ImageAsset.onBoardingImageThree,
+    ImageAsset.f4,
+    ImageAsset.f2,
+    ImageAsset.f3,
   ];
 
   @override

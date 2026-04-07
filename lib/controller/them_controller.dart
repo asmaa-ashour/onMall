@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class ThemeController extends GetxController {
   static const String THEME_KEY = 'theme_mode';
+
   RxBool isDarkMode = false.obs;
 
   @override

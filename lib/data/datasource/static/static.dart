@@ -19,6 +19,7 @@ List<OnBoardingModel> onBoardingList = [
     image: ImageAsset.onBoardingImageTwo,
   ),
   OnBoardingModel(
+// <<<<<<< HEAD
     title: "onboarding_title_3".tr,
     body: "onboarding_body_3".tr, 
     image: ImageAsset.onBoardingImageThree,
@@ -37,37 +38,45 @@ List<OnBoardingModel> onBoardingList = [
   //     title: "Fast Delivery",
   //     body: "Get your orders delivered quickly to your doorstep.",
   //     image: ImageAsset.onBoardingImageThree),
+// =======
+//       title: "onboarding_title_3".tr,
+//       body: "onboarding_body_3".tr,
+//       // OnBoardingModel(
+//       //     title: "Fast Delivery",
+//       //     body: "Get your orders delivered quickly to your doorstep.",
+//       image: ImageAsset.onBoardingImageThree),
+// >>>>>>> 1c36488fe19fd6ff647c92aee2c5398939e5d420
 ];
 
 // /////////////////////////////////////////تجربة
-final List<FloorsModel> floors = [
-  FloorsModel(
-    name: "Ground Floor",
-    image: ImageAsset.onBoardingImageThree,
-    // stores: [
-    //   // StoresModel(name: "Store A", image: ImageAsset.onBoardingImageTwo),
-    //   // StoresModel(name: "Store B", image: ImageAsset.onBoardingImageOne),
-    //   // StoresModel(name: "Store C", image: ImageAsset.onBoardingImageOne),
-    //   // StoresModel(name: "Store D", image: ImageAsset.onBoardingImageOne),
-    //   // StoresModel(name: "Store E", image: ImageAsset.onBoardingImageOne),
-    // ],
-  ),
-  FloorsModel(
-    name: "First Floor",
-    image: ImageAsset.onBoardingImageOne,
-    // إذا ما في متاجر → رح يكون default empty list
-  ),
-  FloorsModel(
-    name: "Second Floor",
-    image: ImageAsset.onBoardingImageTwo,
-    // إذا ما في متاجر → رح يكون default empty list
-  ),
-  FloorsModel(
-    name: "Third Floor",
-    image: ImageAsset.onBoardingImageOne,
-    // إذا ما في متاجر → رح يكون default empty list
-  ),
-];
+// final List<FloorsModel> floors = [
+//   FloorsModel(
+//     name: "Ground Floor",
+//     image: ImageAsset.onBoardingImageThree,
+//     // stores: [
+//     //   // StoresModel(name: "Store A", image: ImageAsset.onBoardingImageTwo),
+//     //   // StoresModel(name: "Store B", image: ImageAsset.onBoardingImageOne),
+//     //   // StoresModel(name: "Store C", image: ImageAsset.onBoardingImageOne),
+//     //   // StoresModel(name: "Store D", image: ImageAsset.onBoardingImageOne),
+//     //   // StoresModel(name: "Store E", image: ImageAsset.onBoardingImageOne),
+//     // ],
+//   ),
+//   FloorsModel(
+//     name: "First Floor",
+//     image: ImageAsset.onBoardingImageOne,
+//     // إذا ما في متاجر → رح يكون default empty list
+//   ),
+//   FloorsModel(
+//     name: "Second Floor",
+//     image: ImageAsset.onBoardingImageTwo,
+//     // إذا ما في متاجر → رح يكون default empty list
+//   ),
+//   FloorsModel(
+//     name: "Third Floor",
+//     image: ImageAsset.onBoardingImageOne,
+//     // إذا ما في متاجر → رح يكون default empty list
+//   ),
+// ];
 // ///////////////////////////////////
 // Map<String, List<StoreModel>> floorStores = {
 //   "Ground Floor": [

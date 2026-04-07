@@ -80,6 +80,7 @@ class MyApp extends StatelessWidget {
       translations: Translation(),
       debugShowCheckedModeBanner: false,
       locale: controller.language,
+
       // theme: controller.appTheme,
       // theme: ThemeData(
       //   textTheme: const TextTheme(
@@ -94,10 +95,12 @@ class MyApp extends StatelessWidget {
       // ),
 
 
-   theme: AppTheme.lightTheme,
-darkTheme: AppTheme.darkTheme,
-themeMode:
-    themeController.isDarkMode.value ? ThemeMode.dark : ThemeMode.light,
+  
+
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: ThemeMode.system, // system, light, dark
+
       initialRoute: AppPages.initial,
       routes: AppPages.routes,
     );

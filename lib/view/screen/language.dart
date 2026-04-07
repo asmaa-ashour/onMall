@@ -52,11 +52,7 @@ class Language extends GetView<LocaleController> {
 
                 /// النص الرئيسي
                 Text(
-
                   'choose_language'.tr,
-
-               
-
                   style: const TextStyle(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
@@ -68,7 +64,6 @@ class Language extends GetView<LocaleController> {
 
                 const SizedBox(height: 15),
 
-
                 Text(
                   'select_preferred_language'.tr,
                   style: TextStyle(
@@ -77,8 +72,6 @@ class Language extends GetView<LocaleController> {
                   ),
                   textAlign: TextAlign.center,
                 ),
-
-
 
                 const Spacer(flex: 1),
 
@@ -93,7 +86,7 @@ class Language extends GetView<LocaleController> {
                         subtitle: 'الإنجليزية',
                         onTap: () {
                           controller.ChangeLocal("en");
-                          Get.offNamed(AppRoute.onBoarding);
+                          Get.offNamed(AppRoute.lang);
                         },
                       ),
                       const SizedBox(height: 15),
@@ -103,7 +96,7 @@ class Language extends GetView<LocaleController> {
                         subtitle: 'Arabic',
                         onTap: () {
                           controller.ChangeLocal("ar");
-                          Get.offNamed(AppRoute.onBoarding);
+                          Get.offNamed(AppRoute.lang);
                         },
                       ),
                     ],
@@ -111,18 +104,6 @@ class Language extends GetView<LocaleController> {
                 ),
 
                 const Spacer(flex: 1),
-
-                /// نص سفلي صغير
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 20),
-                  child: Text(
-                    'swipe_to_continue'.tr,
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.white.withOpacity(0.6),
-                    ),
-                  ),
-                ),
               ],
             ),
           ),

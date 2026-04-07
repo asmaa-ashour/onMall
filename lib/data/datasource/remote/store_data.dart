@@ -1,19 +1,17 @@
-// import 'package:second/core/class/crud.dart';
-// import 'package:second/data/model/store_model.dart';
+import 'package:second/core/class/crud.dart';
+import 'package:second/link_api.dart';
 
-// class StoreData {
-//   Crud crud = Crud();
+class StoreData {
+  Crud crud;
+  StoreData(this.crud);
 
-//   Future<List<StoreModel>> getStores(String areaId) async {
-//     final responseEither = await crud
-//         .getRequest("http://192.168.1.104:8050/api/stores/$areaId", {}, {});
+  Future getData(int areaId) async {
+    var response = await crud.getRequest(
+      AppLink.store + "$areaId", // 🔥 حسب API تبعك
+      {},
+      null,
+    );
 
-//     return responseEither.fold(
-//       (l) => [],
-//       (r) {
-//         List storesJson = r['stores'] ?? [];
-//         return storesJson.map((e) => StoreModel.fromJson(e)).toList();
-//       },
-//     );
-//   }
-// }
+    return response.fold((l) => l, (r) => r);
+  }
+}

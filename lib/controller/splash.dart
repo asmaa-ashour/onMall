@@ -13,20 +13,10 @@ class LogoControllerImp extends LogoController {
   @override
   goToOnBoarding() {
     Timer(const Duration(seconds: 3), () {
-      Get.offAllNamed(AppRoute.lang);
+
+      Get.offAllNamed(AppRoute.onBoarding);
     });
   }
-
-  // @override
-  // changhThem() {
-  //   if (Get.isDarkMode) {
-  //     Get.changeTheme(Themes.customLightTheme);
-  //     myServices.sharedPreferences.setString("theme", "light");
-  //   } else {
-  //     Get.changeTheme(Themes.customDarkTheme);
-  //     myServices.sharedPreferences.setString("theme", "dark");
-  //   }
-  // }
 
   @override
   void onInit() {
