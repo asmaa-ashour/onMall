@@ -1,48 +1,61 @@
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 
-import 'color.dart';
+// import 'color.dart';
 
-ThemeData themeEnglish = ThemeData(
-  fontFamily: "PlayfairDisplay",
-  floatingActionButtonTheme:
-      FloatingActionButtonThemeData(backgroundColor: AppColor.secondColor),
-  appBarTheme: AppBarTheme(
-    centerTitle: true,
-    elevation: 0,
-    iconTheme: IconThemeData(color: AppColor.secondColor),
-    titleTextStyle: const TextStyle(
-        color: AppColor.secondColor,
-        fontWeight: FontWeight.bold,
-        fontFamily: "PlayfairDisplay",
-        fontSize: 25),
-    backgroundColor: Colors.grey[50],
-  ),
-  textTheme: const TextTheme(
-      displayLarge: TextStyle(
-          fontWeight: FontWeight.bold, fontSize: 22, color: AppColor.black),
-      displayMedium: TextStyle(
-          fontWeight: FontWeight.bold, fontSize: 26, color: AppColor.black),
-      bodyLarge: TextStyle(
-          height: 2,
-          color: AppColor.grey,
-          fontWeight: FontWeight.bold,
-          fontSize: 14),
-      bodyMedium: TextStyle(height: 2, color: AppColor.grey, fontSize: 14)),
-  primarySwatch: Colors.blue,
-);
+// ThemeData themeEnglish = ThemeData(
+//   fontFamily: "PlayfairDisplay",
+//   floatingActionButtonTheme:
+//       FloatingActionButtonThemeData(backgroundColor: AppColor.secondColor),
+//   appBarTheme: AppBarTheme(
+//     centerTitle: true,
+//     elevation: 0,
+//     iconTheme: IconThemeData(color: AppColor.secondColor),
+//     titleTextStyle: const TextStyle(
+//         color: AppColor.secondColor,
+//         fontWeight: FontWeight.bold,
+//         fontFamily: "PlayfairDisplay",
+//         fontSize: 25),
+//     backgroundColor: Colors.grey[50],
+//   ),
+//   textTheme: const TextTheme(
+//       displayLarge: TextStyle(
+//           fontFamily: 'PlayfairDisplay',
+//           fontWeight: FontWeight.bold,
+//           fontSize: 22,
+//           color: AppColor.black),
+//       displayMedium: TextStyle(
+//           fontFamily: 'PlayfairDisplay',
+//           fontWeight: FontWeight.bold,
+//           fontSize: 26,
+//           color: AppColor.black),
+//       bodyLarge: TextStyle(
+//           fontFamily: 'PlayfairDisplay',
+//           height: 2,
+//           color: AppColor.grey,
+//           fontWeight: FontWeight.bold,
+//           fontSize: 14),
+//       bodyMedium: TextStyle(
+//           fontFamily: 'PlayfairDisplay',
+//           height: 2,
+//           color: AppColor.grey,
+//           fontSize: 14)),
+//   primarySwatch: Colors.blue,
+// );
 
-ThemeData themeArabic = ThemeData(
-  fontFamily: "Cairo",
-  textTheme: const TextTheme(
-      displayLarge: TextStyle(
-          fontWeight: FontWeight.bold, fontSize: 22, color: AppColor.black),
-      displayMedium: TextStyle(
-          fontWeight: FontWeight.bold, fontSize: 26, color: AppColor.black),
-      bodyLarge: TextStyle(
-          height: 2,
-          color: AppColor.grey,
-          fontWeight: FontWeight.bold,
-          fontSize: 14),
-      bodyMedium: TextStyle(height: 2, color: AppColor.grey, fontSize: 14)),
-  primarySwatch: Colors.blue,
-);
+// ThemeData themeArabic = ThemeData(
+//   fontFamily: "Cairo",
+//   textTheme: const TextTheme(
+//       displayLarge: TextStyle(
+//           fontWeight: FontWeight.bold, fontSize: 22, color: AppColor.black),
+//       displayMedium: TextStyle(
+//           fontWeight: FontWeight.bold, fontSize: 26, color: AppColor.black),
+//       bodyLarge: TextStyle(
+//           fontFamily: 'Cairo',
+//           height: 2,
+//           color: AppColor.grey,
+//           fontWeight: FontWeight.bold,
+//           fontSize: 14),
+//       bodyMedium: TextStyle(
+//           height: 2, color: AppColor.grey, fontSize: 14, fontFamily: 'Cairo')),
+//   primarySwatch: Colors.blue,
+// );

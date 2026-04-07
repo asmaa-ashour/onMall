@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:second/data/model/floorModel.dart';
+import 'package:second/data/model/service_areas_model.dart';
 // import 'package:second/data/model/storeModel.dart';
 // import 'package:second/data/model/storeModel.dart';
 
@@ -48,55 +49,29 @@ List<OnBoardingModel> onBoardingList = [
 // >>>>>>> 1c36488fe19fd6ff647c92aee2c5398939e5d420
 ];
 
-// /////////////////////////////////////////تجربة
-// final List<FloorsModel> floors = [
-//   FloorsModel(
-//     name: "Ground Floor",
-//     image: ImageAsset.onBoardingImageThree,
-//     // stores: [
-//     //   // StoresModel(name: "Store A", image: ImageAsset.onBoardingImageTwo),
-//     //   // StoresModel(name: "Store B", image: ImageAsset.onBoardingImageOne),
-//     //   // StoresModel(name: "Store C", image: ImageAsset.onBoardingImageOne),
-//     //   // StoresModel(name: "Store D", image: ImageAsset.onBoardingImageOne),
-//     //   // StoresModel(name: "Store E", image: ImageAsset.onBoardingImageOne),
-//     // ],
-//   ),
-//   FloorsModel(
-//     name: "First Floor",
-//     image: ImageAsset.onBoardingImageOne,
-//     // إذا ما في متاجر → رح يكون default empty list
-//   ),
-//   FloorsModel(
-//     name: "Second Floor",
-//     image: ImageAsset.onBoardingImageTwo,
-//     // إذا ما في متاجر → رح يكون default empty list
-//   ),
-//   FloorsModel(
-//     name: "Third Floor",
-//     image: ImageAsset.onBoardingImageOne,
-//     // إذا ما في متاجر → رح يكون default empty list
-//   ),
-// ];
-// ///////////////////////////////////
-// Map<String, List<StoreModel>> floorStores = {
-//   "Ground Floor": [
-//     StoreModel(
-//       name: "Starbucks",
-//       image: ImageAsset.onBoardingImageThree,
-//     ),
-//     StoreModel(
-//       name: "McDonald's",
-//       image: ImageAsset.onBoardingImageOne,
-//     ),
-//   ],
-//   "First Floor": [
-//     StoreModel(
-//       name: "Zara",
-//       image: ImageAsset.onBoardingImageTwo,
-//     ),
-//     StoreModel(
-//       name: "H&M",
-//       image: ImageAsset.onBoardingImageThree,
-//     ),
-//   ],
-// };
+List<Service> services = [
+  Service(
+    name: "Hair Styling",
+    providerName: "Beauty Salon",
+    price: 25,
+    rating: 4.7,
+    isFavorite: true,
+    image: "assets/images/f1.jpg",
+  ),
+  Service(
+    name: "Car Wash",
+    providerName: "Clean Center",
+    price: 10,
+    rating: 4.3,
+    isFavorite: false,
+    image: "assets/images/f2.jpg",
+  ),
+  Service(
+    name: "Makeup",
+    providerName: "Glam Studio",
+    price: 40,
+    rating: 4.9,
+    isFavorite: true,
+    image: "assets/images/f3.jpg",
+  ),
+];

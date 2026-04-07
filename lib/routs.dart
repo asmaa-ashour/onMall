@@ -9,6 +9,7 @@ import 'package:second/view/screen/language.dart';
 import 'package:second/view/screen/onBoarding.dart';
 import 'package:second/view/screen/auth/signUp.dart';
 import 'package:second/view/screen/pay_screen.dart';
+import 'package:second/view/screen/services_and_stores/services_screen.dart';
 import 'package:second/view/screen/setting.dart';
 import 'package:second/view/screen/splash.dart';
 
@@ -38,7 +39,8 @@ class AppPages {
     AppRoute.lang: (context) => const Language(),
     AppRoute.setting: (context) => const Setting(),
     AppRoute.personalProfile: (context) => const ProfilePage(),
-    AppRoute.notification: (context) => const NotificationScreen(),
+    AppRoute.notification: (context) => const ServicesScreen(),
+    //const NotificationScreen(),
     AppRoute.editPersonalProfile: (context) => const EditPersonalProfile(),
     AppRoute.chargingbalance: (context) => const PayScreen(),
 

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:second/controller/home/homeController.dart';
 import 'package:second/core/class/status_request.dart';
+import 'package:second/core/constant/app_constants.dart';
 import 'package:second/core/constant/color.dart';
 import 'package:second/data/datasource/static/static.dart';
 import 'package:second/view/widget/home/FloorCard.dart';
@@ -48,8 +49,10 @@ class FloorsSection extends StatelessWidget {
 
                   return Padding(
                     padding: EdgeInsets.only(
-                      left: index == 0 ? 16 : 6,
-                      right: index == _.floors.length - 1 ? 16 : 6,
+                      left: index == 0 ? AppDimens.medium : AppDimens.small,
+                      right: index == _.floors.length - 1
+                          ? AppDimens.medium
+                          : AppDimens.small,
                     ),
                     child: Transform.translate(
                       offset: Offset(0, translateY),

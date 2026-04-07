@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:second/core/constant/app_constants.dart';
 import 'package:second/data/model/floorModel.dart';
-import 'package:second/view/screen/floor_details_page.dart';
 import 'package:second/view/screen/test/area_screen.dart';
 
 class FloorCard extends StatelessWidget {
@@ -18,6 +18,8 @@ class FloorCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double s = SizeConfig.scaleFactor.clamp(0.9, 1.2);
+
     return GestureDetector(
       onTap: () {
         Get.to(
@@ -31,16 +33,14 @@ class FloorCard extends StatelessWidget {
       child: Hero(
         tag: floor.name ?? "",
         child: AnimatedContainer(
-          duration: const Duration(
-            milliseconds: 400,
-          ),
-
+          duration: const Duration(milliseconds: 400),
           curve: Curves.easeOut,
-          margin: const EdgeInsets.symmetric(horizontal: 4), // 🔥 هامش أقل
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
 
-            // 🔥 Glow للكارد الحالي
+          /// ❌ لا تعمليها responsive
+          margin: const EdgeInsets.symmetric(horizontal: AppDimens.verysmall),
+
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(AppDimens.borderRadius),
             boxShadow: isActive
                 ? [
                     BoxShadow(
@@ -57,16 +57,16 @@ class FloorCard extends StatelessWidget {
                   ],
           ),
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(AppDimens.borderRadius),
             child: Stack(
               children: [
-                // 🔥 Parallax للصورة
+                /// 🔥 Parallax Image
                 Transform.translate(
                   offset: Offset(parallaxOffset * 40, 0),
                   child: floor.imageUrl != null
                       ? Image.network(
                           floor.imageUrl!,
-                          height: 280,
+                          height: 280, // ❌ ثابت
                           width: double.infinity,
                           fit: BoxFit.cover,
                         )
@@ -78,8 +78,9 @@ class FloorCard extends StatelessWidget {
                         ),
                 ),
 
+                /// 🔥 Gradient
                 Container(
-                  height: 280, // 🔥 خلي الطول كما هو
+                  height: 280,
                   decoration: const BoxDecoration(
                     gradient: LinearGradient(
                       colors: [Colors.transparent, Colors.black87],
@@ -89,14 +90,15 @@ class FloorCard extends StatelessWidget {
                   ),
                 ),
 
+                /// 🔥 Title
                 Positioned(
-                  bottom: 20,
-                  left: 15,
+                  bottom: AppDimens.medium,
+                  left: AppDimens.medium,
                   child: Text(
                     floor.name ?? "",
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: Colors.white,
-                      fontSize: 20,
+                      fontSize: 18.w, // ✅ responsive
                       fontWeight: FontWeight.bold,
                     ),
                   ),

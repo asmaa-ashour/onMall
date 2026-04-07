@@ -1,46 +1,70 @@
 import 'package:flutter/material.dart';
+import 'package:second/core/constant/app_constants.dart';
 
 class RowSettingWidget extends StatelessWidget {
-  String text;
-  IconData icon;
-  void Function()? onTap;
-  RowSettingWidget({required this.text, required this.icon, this.onTap});
+  final String text;
+  final IconData icon;
+  final void Function()? onTap;
+
+  const RowSettingWidget({
+    super.key,
+    required this.text,
+    required this.icon,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
+    double s = SizeConfig.scaleFactor.clamp(0.9, 1.2);
+
     return InkWell(
+      borderRadius: BorderRadius.circular(AppDimens.borderRadius),
       onTap: onTap,
       child: Column(
         children: [
           Padding(
-            padding:
-                const EdgeInsets.only(left: 30, right: 30, top: 20, bottom: 20),
+            padding: const EdgeInsets.symmetric(
+              horizontal: AppDimens.large, // بدل 30
+              vertical: AppDimens.medium, // بدل 20
+            ),
             child: Row(
               children: [
+                /// 🔹 Icon
                 Icon(
                   icon,
+                  size: AppSizes.icon * s, // ✅ responsive
+                  color: AppColors.black87,
                 ),
-                SizedBox(
-                  width: 20,
+
+                const SizedBox(width: AppDimens.medium),
+
+                /// 🔹 Text
+                Expanded(
+                  child: Text(
+                    text,
+                    style: TextStyle(
+                      fontSize: 16 * s, // ✅ responsive
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).textTheme.bodyLarge?.color,
+                    ),
+                  ),
                 ),
-                Text(
-                  text,
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                Spacer(
-                  flex: 1,
-                ),
+
+                /// 🔹 Arrow
                 Icon(
                   Icons.arrow_forward_ios,
-                  color: Colors.grey,
-                )
+                  size: 16 * s, // ✅ responsive
+                  color: AppColors.grey,
+                ),
               ],
             ),
           ),
-          Divider(
-            endIndent: 40,
-            indent: 40,
-          )
+
+          /// 🔹 Divider
+          const Divider(
+            indent: AppDimens.large,
+            endIndent: AppDimens.large,
+          ),
         ],
       ),
     );
