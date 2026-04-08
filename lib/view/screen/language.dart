@@ -65,20 +65,6 @@ class Language extends GetView<LocaleController> {
                   textAlign: TextAlign.center,
                 ),
 
-<<<<<<< HEAD
-                const SizedBox(height: 15),
-
-                Text(
-                  'select_preferred_language'.tr,
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.white.withOpacity(0.9),
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-
-=======
->>>>>>> origin/feature/store_and_product
                 const Spacer(flex: 1),
 
                 /// LANGUAGE CARDS
