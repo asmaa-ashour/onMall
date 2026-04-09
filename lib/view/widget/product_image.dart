@@ -21,7 +21,7 @@ class ProductImage extends StatelessWidget {
     return Container(
       width: width,
       height: height,
-      margin: const EdgeInsets.symmetric(horizontal: AppDimens.medium),
+      margin: const EdgeInsets.symmetric(horizontal: AppDimens.medium16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(borderRadius),
         color: Colors.pink.shade100,

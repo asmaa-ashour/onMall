@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:intl/intl.dart';
@@ -41,23 +42,44 @@ class Crud {
     }
   }
 
-/////////////////////////NEW
   Future<Either<StatusRequest, Map>> postData(
       String linkurl, Map data, dynamic token) async {
+    Map<String, String> headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json', // مهم جدًا
+    };
+
+    if (token != null && token.toString().isNotEmpty) {
+      headers['Authorization'] = "Bearer $token";
+    }
+
     var response = await http.post(
       Uri.parse(linkurl),
       body: jsonEncode(data),
-      headers: {
-        'Authorization': "Bearer ${CacheClass.getData(key: "Token")}",
-        'Content-Type': 'application/json', // مهم جدا
-      },
+      headers: headers,
     );
-    print(response.statusCode);
+
+    print("STATUS CODE: ${response.statusCode}");
+    print("BODY: ${response.body}");
+
+    // ✅ حالة النجاح
     if (response.statusCode == 200 || response.statusCode == 201) {
       Map responsebody = jsonDecode(response.body);
-      print(responsebody);
-
       return Right(responsebody);
+
+      // ⚠️ حالة validation error (مثل الايميل موجود)
+    } else if (response.statusCode == 422) {
+      Map responsebody = jsonDecode(response.body);
+      Get.snackbar(
+        "Error",
+        responsebody['message'] ?? "Validation error",
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red.withOpacity(0.7),
+        colorText: Colors.white,
+      );
+      return const Left(StatusRequest.failure);
+
+      // ❌ باقي الأخطاء
     } else {
       return const Left(StatusRequest.serverfailure);
     }

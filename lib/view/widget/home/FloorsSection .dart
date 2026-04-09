@@ -49,10 +49,10 @@ class FloorsSection extends StatelessWidget {
 
                   return Padding(
                     padding: EdgeInsets.only(
-                      left: index == 0 ? AppDimens.medium : AppDimens.small,
+                      left: index == 0 ? AppDimens.medium16 : AppDimens.small8,
                       right: index == _.floors.length - 1
-                          ? AppDimens.medium
-                          : AppDimens.small,
+                          ? AppDimens.medium16
+                          : AppDimens.small8,
                     ),
                     child: Transform.translate(
                       offset: Offset(0, translateY),

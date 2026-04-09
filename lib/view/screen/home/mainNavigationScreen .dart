@@ -6,6 +6,7 @@ import 'package:second/view/screen/CartPage.dart';
 import 'package:second/view/screen/FavoritesPage.dart';
 import 'package:second/view/screen/home/HomePage.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:second/view/screen/services_and_stores/services_screen.dart';
 import 'package:second/view/screen/setting.dart';
 import 'package:second/view/screen/test/area_screen.dart';
 
@@ -14,7 +15,7 @@ class MainNavigationScreen extends StatelessWidget {
 
   final List<Widget> pages = [
     HomePage(),
-    FavoritesPage(),
+    ServicesScreen(),
     CartPage(),
     //AreasPage(),
     Setting(),

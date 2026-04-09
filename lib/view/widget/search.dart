@@ -15,7 +15,7 @@ class Search extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.symmetric(
-        horizontal: AppDimens.large, // ❌ بدون scale
+        horizontal: AppDimens.large24, // ❌ بدون scale
       ),
       child: Container(
         height: AppDimens.buttonHeight, // ❌ ثابت
@@ -26,7 +26,7 @@ class Search extends StatelessWidget {
               color: themeController.isDarkMode.value
                   ? Colors.white10
                   : Colors.black12,
-              blurRadius: AppDimens.small,
+              blurRadius: AppDimens.small8,
             )
           ],
         ),
@@ -65,8 +65,8 @@ class Search extends StatelessWidget {
 
             /// ❗ لا تكبريه بالـ scale
             contentPadding: const EdgeInsets.symmetric(
-              vertical: AppDimens.small,
-              horizontal: AppDimens.medium,
+              vertical: AppDimens.small8,
+              horizontal: AppDimens.medium16,
             ),
           ),
         ),

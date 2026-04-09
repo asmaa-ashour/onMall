@@ -18,4 +18,6 @@ class ImageAsset {
   static String f3 = "$rootImages/f3.jpg";
   static String f4 = "$rootImages/f4.jpg";
   static String f5 = "$rootImages/f5.jpg";
+  static String clean = "$rootImages/clean.png";
+  // static const String logo = "$rootImages/logoo.png";
 }

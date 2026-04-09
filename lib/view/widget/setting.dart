@@ -24,8 +24,8 @@ class RowSettingWidget extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(
-              horizontal: AppDimens.large, // بدل 30
-              vertical: AppDimens.medium, // بدل 20
+              horizontal: AppDimens.large24, // بدل 30
+              vertical: AppDimens.medium16, // بدل 20
             ),
             child: Row(
               children: [
@@ -36,7 +36,7 @@ class RowSettingWidget extends StatelessWidget {
                   color: AppColors.black87,
                 ),
 
-                const SizedBox(width: AppDimens.medium),
+                const SizedBox(width: AppDimens.medium16),
 
                 /// 🔹 Text
                 Expanded(
@@ -62,8 +62,8 @@ class RowSettingWidget extends StatelessWidget {
 
           /// 🔹 Divider
           const Divider(
-            indent: AppDimens.large,
-            endIndent: AppDimens.large,
+            indent: AppDimens.large24,
+            endIndent: AppDimens.large24,
           ),
         ],
       ),

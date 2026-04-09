@@ -15,7 +15,8 @@ class AuthController extends GetxController {
   TextEditingController password = TextEditingController();
   TextEditingController phone = TextEditingController();
 
-  signup() async {
+  Future<dynamic> signup() async {
+    // 👈 dynamic بدلاً من bool
     statusRequest = StatusRequest.loading;
     update();
 
@@ -26,21 +27,25 @@ class AuthController extends GetxController {
       phone.text,
     );
 
-    statusRequest =
-        response is StatusRequest ? response : StatusRequest.success;
+    print("RESPONSE: $response");
 
-    if (statusRequest == StatusRequest.success) {
-      String token = response['token'];
-
-      myServices.sharedPreferences.setString("token", token);
-      myServices.sharedPreferences
-          .setString("user", response['user'].toString());
-
-      Get.snackbar("Success", response['message']);
-    } else {
-      Get.snackbar("Error", "Signup failed");
+    if (response is StatusRequest) {
+      statusRequest = response;
+      Get.snackbar("Error", "Server error");
+      update();
+      return false;
     }
 
-    update();
+    // ✅ تحقق من نجاح الرد من السيرفر
+    if (response is Map<String, dynamic> && response['message'] != null) {
+      statusRequest = StatusRequest.success;
+      update();
+      return response; // 👈 ارجع الـ Map نفسه
+    } else {
+      statusRequest = StatusRequest.failure;
+      Get.snackbar("Error", response['message'] ?? "Signup failed");
+      update();
+      return false;
+    }
   }
 }

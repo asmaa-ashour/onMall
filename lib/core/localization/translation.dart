@@ -52,6 +52,7 @@ class Translation implements Translations {
           "charging_balance": "شحن الرصيد",
           "notification": "الإشعارات",
           "setting": "الإعدادات",
+          "services": "الخدمات",
         },
         "en": {
           "1": "Choose Langauge",
@@ -101,6 +102,7 @@ class Translation implements Translations {
           "charging_balance": "Charging Balance",
           "notification": "Notifications",
           "setting": "Settings",
+          "services": "Services",
         }
       };
 }

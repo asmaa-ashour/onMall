@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:second/core/constant/app_constants.dart';
-import 'package:second/core/constant/color.dart';
 import 'package:second/core/constant/imageassets.dart';
 import 'package:second/data/model/service_areas_model.dart';
 import 'package:second/view/widget/services/services_card.dart';
+import 'package:second/view/widget/services/sub_Services_card.dart';
 
-class ServicesScreen extends StatelessWidget {
-  const ServicesScreen({super.key});
+class SubServicesScreen extends StatelessWidget {
+  final String categoryName; // اسم الخدمة العامة
+  // final List<Service> subServices; // قائمة الخدمات الفرعية
+
+  const SubServicesScreen({
+    super.key,
+    required this.categoryName,
+    // required this.subServices,
+  });
 
   @override
   Widget build(BuildContext context) {
     // 🔥 بيانات ثابتة
-    final List<Service> services = [
+    final List<Service> subServices = [
       Service(
         name: "Hair Styling",
         providerName: "Beauty Salon",
@@ -40,13 +46,12 @@ class ServicesScreen extends StatelessWidget {
     ];
 
     return Scaffold(
-      backgroundColor: AppColors.white,
       appBar: AppBar(
+        centerTitle: false,
         backgroundColor: AppColors.white,
         elevation: 0,
-        centerTitle: false,
         title: Text(
-          "services".tr,
+          categoryName,
           style: AppTextStyles.productName.copyWith(
             fontSize: 22,
             color: AppColors.primaryPurple,
@@ -54,16 +59,22 @@ class ServicesScreen extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: AppDimens.small8,
-        ),
-        child: ListView.separated(
-          itemCount: services.length,
-          separatorBuilder: (context, index) =>
-              const SizedBox(height: AppDimens.medium16),
+        padding: const EdgeInsets.symmetric(horizontal: AppDimens.medium16),
+        child: GridView.builder(
+          padding: const EdgeInsets.all(AppDimens.medium16),
+          itemCount: subServices.length,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            mainAxisSpacing: 12,
+            crossAxisSpacing: 12,
+            childAspectRatio: 0.8,
+          ),
           itemBuilder: (context, index) {
-            return ServiceCard(
-              service: services[index],
+            return SubServiceCard(
+              service: subServices[index],
+              onTap: () {
+                // هنا ممكن تفتح التفاصيل الفرعية لكل خدمة
+              },
             );
           },
         ),
