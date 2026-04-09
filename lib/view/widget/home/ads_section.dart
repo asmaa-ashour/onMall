@@ -31,14 +31,14 @@ class _AdsSectionState extends State<AdsSection> {
           items: ads.map((image) {
             return Container(
               margin: const EdgeInsets.symmetric(
-                horizontal: AppDimens.small, // ❌ ثابت
+                horizontal: AppDimens.small8, // ❌ ثابت
               ),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(AppDimens.borderRadius),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black12,
-                    blurRadius: AppDimens.small,
+                    blurRadius: AppDimens.small8,
                   ),
                 ],
               ),
@@ -69,8 +69,8 @@ class _AdsSectionState extends State<AdsSection> {
 
                     /// 📝 Text
                     Positioned(
-                      bottom: AppDimens.medium,
-                      left: AppDimens.medium,
+                      bottom: AppDimens.medium16,
+                      left: AppDimens.medium16,
                       child: Text(
                         "🔥 Big Sale",
                         style: TextStyle(
@@ -99,7 +99,7 @@ class _AdsSectionState extends State<AdsSection> {
           ),
         ),
 
-        const SizedBox(height: AppDimens.small),
+        const SizedBox(height: AppDimens.small8),
 
         /// 💫 Dots Indicator
         Row(

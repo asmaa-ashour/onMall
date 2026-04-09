@@ -37,7 +37,7 @@ class FloorCard extends StatelessWidget {
           curve: Curves.easeOut,
 
           /// ❌ لا تعمليها responsive
-          margin: const EdgeInsets.symmetric(horizontal: AppDimens.verysmall),
+          margin: const EdgeInsets.symmetric(horizontal: AppDimens.verysmall4),
 
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(AppDimens.borderRadius),
@@ -92,8 +92,8 @@ class FloorCard extends StatelessWidget {
 
                 /// 🔥 Title
                 Positioned(
-                  bottom: AppDimens.medium,
-                  left: AppDimens.medium,
+                  bottom: AppDimens.medium16,
+                  left: AppDimens.medium16,
                   child: Text(
                     floor.name ?? "",
                     style: TextStyle(

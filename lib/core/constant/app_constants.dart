@@ -15,9 +15,18 @@ class AppColors {
 }
 
 class AppDimens {
-  static const double small = 8.0;
+  static const double small8 = 8.0;
+  static const double verysmall4 = 4.0;
+  static const double medium16 = 16.0;
+  static const double medium14 = 14.0;
+  static const double large24 = 24.0;
+  static const double xLarge32 = 32.0;
+
+  ///
   static const double verysmall = 4.0;
+  static const double small = 8.0;
   static const double medium = 16.0;
+  // static const double medium = 14.0;
   static const double large = 24.0;
   static const double xLarge = 32.0;
 
@@ -38,7 +47,7 @@ class AppTextStyles {
   );
 
   static const TextStyle productPrice = TextStyle(
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: FontWeight.w600,
     color: AppColors.primaryPurple,
   );

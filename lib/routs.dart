@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:second/core/constant/routs.dart';
 import 'package:second/view/notification.dart';
+import 'package:second/view/screen/FavoritesPage.dart';
 import 'package:second/view/screen/ProfilePage.dart';
 import 'package:second/view/screen/edit_personal_profile.dart';
 import 'package:second/view/screen/home/mainNavigationScreen%20.dart';
@@ -17,7 +18,11 @@ class AppPages {
   static const initial = '/logo';
 
   static final Map<String, Widget Function(BuildContext)> routes = {
+<<<<<<< HEAD
     AppRoute.logIn: (context) =>  SignInScreen(),
+=======
+    AppRoute.logIn: (context) => SignInScreen(),
+>>>>>>> feature/store_and_product
     AppRoute.signUp: (context) => const SignUpScreen(),
     AppRoute.logo: (context) => const LogoPge(),
     AppRoute.onBoarding: (context) => const OnBoardingScreen(),
@@ -39,10 +44,14 @@ class AppPages {
     AppRoute.lang: (context) => const Language(),
     AppRoute.setting: (context) => const Setting(),
     AppRoute.personalProfile: (context) => const ProfilePage(),
-    AppRoute.notification: (context) => const ServicesScreen(),
+    AppRoute.notification: (context) => const NotificationScreen(),
     //const NotificationScreen(),
     AppRoute.editPersonalProfile: (context) => const EditPersonalProfile(),
     AppRoute.chargingbalance: (context) => const PayScreen(),
+<<<<<<< HEAD
 
+=======
+    AppRoute.favorite: (context) => const FavoritesPage(),
+>>>>>>> feature/store_and_product
   };
 }
