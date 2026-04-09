@@ -12,9 +12,8 @@ class AppLink {
   static const String logout = "$serverLink/logout";
   static const String resend = "$serverLink/resend";
   static const String verifycodessignup = "$serverLink/verify-otp";
- static const String resendOtp = "$serverLink/resend-otp";
   static const String notifications = "$serverLink/notifications";
-  static const String resendOtp = "$serverLink/resend-otp";
+  static const String resendOtp = "$serverLink/reset-password";
   //===================== images ===========================back
   static const String imagestatic = "http://192.168.1.110:8000/";
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:second/controller/them_controller.dart';
 import 'package:second/core/constant/app_constants.dart';
 import 'package:second/view/widget/home/FloorsSection .dart';
@@ -54,7 +53,10 @@ class HomePage extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: AppColors.white,
                           shape: BoxShape.circle,
+                          boxShadow: [
+                            BoxShadow(
                               color: Colors.black12,
+                              blurRadius: AppDimens.small.w,
                             )
                           ],
                         ),
@@ -66,7 +68,6 @@ class HomePage extends StatelessWidget {
                                 ? Icons.light_mode
                                 : Icons.dark_mode,
                             color: themeController.isDarkMode.value
-
                                 ? Colors.amber
                                 : AppColors.primaryPurple,
                           ),

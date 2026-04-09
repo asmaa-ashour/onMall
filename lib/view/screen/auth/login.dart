@@ -1,17 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-<<<<<<< HEAD
-=======
-import 'package:second/controller/auth/login_controller.dart';
->>>>>>> feature/store_and_product
+import 'package:second/controller/auth/log_in_controller.dart';
 import 'package:second/core/class/status_request.dart';
 import 'package:second/core/class/cacheClass%20.dart';
 import 'package:second/core/constant/imageassets.dart';
 import 'package:second/view/screen/home/HomePage.dart';
-<<<<<<< HEAD
-import '../../../controller/auth/log_in_controller.dart';
-=======
->>>>>>> feature/store_and_product
 
 class SignInScreen extends StatelessWidget {
   final String? email; // البريد من OTP إذا موجود
@@ -98,56 +91,6 @@ class SignInScreen extends StatelessWidget {
                       height: 55,
                       child: GetBuilder<LoginController>(
                         builder: (_) => ElevatedButton(
-<<<<<<< HEAD
-                       onPressed: () async {
-  // تسجيل الدخول
-  await loginController.login(
-    emailController.text.trim(),
-    passwordController.text.trim(),
-  );
-
-  // تحديث الـ GetBuilder بعد login
-  loginController.update();
-
-  // تحقق من نجاح تسجيل الدخول
-  if (loginController.statusRequest == StatusRequest.success &&
-      loginController.loginModel?.status == 'success') {
-
-    // حفظ التوكن في الكاش
-    await CacheClass.setData(
-      key: "Token",
-      value: loginController.loginModel!.token,
-    );
-
-    // التحقق من أن التوكن محفوظ
-    String? savedToken = CacheClass.getData(key: "Token");
-    print("Token stored in CacheClass: $savedToken");
-
-    // عرض SnackBar لتأكيد الحفظ
-    Get.snackbar(
-      "Login Successful",
-      "Token stored: ${savedToken ?? "No Token"}",
-      snackPosition: SnackPosition.BOTTOM,
-      backgroundColor: Colors.green.withOpacity(0.8),
-      colorText: Colors.white,
-    );
-
-    // الانتقال للصفحة الرئيسية بعد تأخير بسيط
-    await Future.delayed(const Duration(milliseconds: 150));
-    Get.offAll(() => const HomePage());
-
-  } else {
-    // فشل تسجيل الدخول
-    Get.snackbar(
-      "Error",
-      loginController.loginModel?.message ?? "Login failed",
-      snackPosition: SnackPosition.BOTTOM,
-      backgroundColor: Colors.red.withOpacity(0.7),
-      colorText: Colors.white,
-    );
-  }
-},
-=======
                           onPressed: () async {
                             // تسجيل الدخول
                             await loginController.login(
@@ -198,7 +141,6 @@ class SignInScreen extends StatelessWidget {
                               );
                             }
                           },
->>>>>>> feature/store_and_product
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white,
                             foregroundColor: Colors.black,
@@ -207,15 +149,10 @@ class SignInScreen extends StatelessWidget {
                             ),
                             elevation: 10,
                           ),
-<<<<<<< HEAD
-                          child: loginController.statusRequest == StatusRequest.loading
-                              ? const CircularProgressIndicator(color: Colors.black)
-=======
                           child: loginController.statusRequest ==
                                   StatusRequest.loading
                               ? const CircularProgressIndicator(
                                   color: Colors.black)
->>>>>>> feature/store_and_product
                               : const Text(
                                   "Sign In",
                                   style: TextStyle(
@@ -237,12 +174,8 @@ class SignInScreen extends StatelessWidget {
   }
 
   /// INPUT FIELD
-<<<<<<< HEAD
-  Widget _customField(String hint, IconData icon, TextEditingController controller) {
-=======
   Widget _customField(
       String hint, IconData icon, TextEditingController controller) {
->>>>>>> feature/store_and_product
     return TextField(
       controller: controller,
       style: const TextStyle(color: Colors.white),
@@ -259,8 +192,4 @@ class SignInScreen extends StatelessWidget {
       ),
     );
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> feature/store_and_product

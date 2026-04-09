@@ -18,11 +18,7 @@ class AppPages {
   static const initial = '/logo';
 
   static final Map<String, Widget Function(BuildContext)> routes = {
-<<<<<<< HEAD
-    AppRoute.logIn: (context) =>  SignInScreen(),
-=======
     AppRoute.logIn: (context) => SignInScreen(),
->>>>>>> feature/store_and_product
     AppRoute.signUp: (context) => const SignUpScreen(),
     AppRoute.logo: (context) => const LogoPge(),
     AppRoute.onBoarding: (context) => const OnBoardingScreen(),
@@ -39,7 +35,6 @@ class AppPages {
     // AppRoute.area: (context) => const AreasPage(),
     // AppRoute.lang: (context) => const Language(),
 
-
     // AppRoute.area: (context) => const AreasPage(),
     AppRoute.lang: (context) => const Language(),
     AppRoute.setting: (context) => const Setting(),
@@ -48,10 +43,6 @@ class AppPages {
     //const NotificationScreen(),
     AppRoute.editPersonalProfile: (context) => const EditPersonalProfile(),
     AppRoute.chargingbalance: (context) => const PayScreen(),
-<<<<<<< HEAD
-
-=======
     AppRoute.favorite: (context) => const FavoritesPage(),
->>>>>>> feature/store_and_product
   };
 }

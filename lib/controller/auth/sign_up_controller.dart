@@ -15,12 +15,8 @@ class AuthController extends GetxController {
   TextEditingController password = TextEditingController();
   TextEditingController phone = TextEditingController();
 
-<<<<<<< HEAD
-  Future<dynamic> signup() async {  // 👈 dynamic بدلاً من bool
-=======
   Future<dynamic> signup() async {
     // 👈 dynamic بدلاً من bool
->>>>>>> feature/store_and_product
     statusRequest = StatusRequest.loading;
     update();
 

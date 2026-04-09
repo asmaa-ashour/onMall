@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:second/controller/auth/login_controller.dart';
+import 'package:second/controller/auth/log_in_controller.dart';
 import 'package:second/controller/auth/sign_up_controller.dart';
 import 'package:second/core/class/status_request.dart';
 import 'package:second/core/constant/imageassets.dart';
 import 'package:second/view/screen/auth/otp_screen.dart';
-<<<<<<< HEAD
-import '../../../controller/auth/log_in_controller.dart';
 import 'login.dart';
-import 'otp.dart';
-=======
-import 'login.dart';
->>>>>>> feature/store_and_product
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -75,7 +69,8 @@ class SignUpScreen extends StatelessWidget {
                       const SizedBox(height: 15),
                       _customField("Password", Icons.lock, controller.password),
                       const SizedBox(height: 15),
-                      _customField("Phone Number", Icons.phone, controller.phone),
+                      _customField(
+                          "Phone Number", Icons.phone, controller.phone),
                       const SizedBox(height: 25),
 
                       /// SIGN UP BUTTON
@@ -83,33 +78,6 @@ class SignUpScreen extends StatelessWidget {
                         width: double.infinity,
                         height: 55,
                         child: ElevatedButton(
-<<<<<<< HEAD
-              onPressed: () async {
-  var response = await controller.signup();
-
-  // ✅ تحقق من النوع قبل استخدام []
-  if (response is Map<String, dynamic> && response['message'] != null) {
-    Get.snackbar(
-      "Success",
-      response['message'],
-      snackPosition: SnackPosition.BOTTOM,
-      backgroundColor: Colors.green.withOpacity(0.7),
-      colorText: Colors.white,
-    );
-
-    Get.to(() => OtpScreen(email: controller.email.text));
-  } else {
-    // ❌ فشل SignUp
-    Get.snackbar(
-      "Error",
-      "Signup failed. Try again.",
-      snackPosition: SnackPosition.BOTTOM,
-      backgroundColor: Colors.red.withOpacity(0.7),
-      colorText: Colors.white,
-    );
-  }
-},
-=======
                           onPressed: () async {
                             var response = await controller.signup();
 
@@ -136,7 +104,6 @@ class SignUpScreen extends StatelessWidget {
                               );
                             }
                           },
->>>>>>> feature/store_and_product
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white,
                             foregroundColor: Colors.black,
@@ -145,15 +112,16 @@ class SignUpScreen extends StatelessWidget {
                             ),
                             elevation: 10,
                           ),
-                          child: controller.statusRequest == StatusRequest.loading
-                              ? const CircularProgressIndicator()
-                              : const Text(
-                                  "Sign Up",
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
+                          child:
+                              controller.statusRequest == StatusRequest.loading
+                                  ? const CircularProgressIndicator()
+                                  : const Text(
+                                      "Sign Up",
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
                         ),
                       ),
 
@@ -169,12 +137,8 @@ class SignUpScreen extends StatelessWidget {
                           ),
                           GestureDetector(
                             onTap: () {
-<<<<<<< HEAD
-                              Get.to(() => SignInScreen(), binding: BindingsBuilder(() {
-=======
                               Get.to(() => SignInScreen(),
                                   binding: BindingsBuilder(() {
->>>>>>> feature/store_and_product
                                 Get.put(LoginController());
                               }));
                             },
@@ -221,8 +185,4 @@ class SignUpScreen extends StatelessWidget {
       ),
     );
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> feature/store_and_product

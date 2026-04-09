@@ -60,8 +60,4 @@ class OtpData {
       },
     );
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> feature/store_and_product
