@@ -7,7 +7,7 @@ class AppColors {
   static const Color white = Colors.white;
   static const Color black87 = Colors.black87;
   static const Color grey = Colors.grey;
-
+  static const Color thirdColor = Color(0xff2B0F14);
   static const List<Color> gradientColors = [
     primaryPurple,
     secondaryPurple,

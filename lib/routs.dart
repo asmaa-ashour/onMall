@@ -10,6 +10,7 @@ import 'package:second/view/screen/language.dart';
 import 'package:second/view/screen/onBoarding.dart';
 import 'package:second/view/screen/auth/signUp.dart';
 import 'package:second/view/screen/pay_screen.dart';
+import 'package:second/view/screen/services_and_stores/services_deteile.dart';
 import 'package:second/view/screen/services_and_stores/services_screen.dart';
 import 'package:second/view/screen/setting.dart';
 import 'package:second/view/screen/splash.dart';
@@ -24,6 +25,7 @@ class AppPages {
     AppRoute.onBoarding: (context) => const OnBoardingScreen(),
     AppRoute.home: (context) => MainNavigationScreen(),
     AppRoute.mainHomePage: (context) => MainNavigationScreen(),
+    AppRoute.serviceDetails: (context) => ServiceDetailsScreen(),
 
     // AppRoute.product: (context) => ProductsPage(areaId: '',),
 

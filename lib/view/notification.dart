@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:second/core/constant/app_constants.dart';
 import 'package:second/core/constant/color.dart';
 
 class NotificationScreen extends StatelessWidget {
@@ -12,7 +13,7 @@ class NotificationScreen extends StatelessWidget {
             style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: AppColor.prrimaryColor)),
+                color: AppColors.primaryPurple)),
       ),
       body: const Center(child: Text("Notification Screen")),
     );

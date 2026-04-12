@@ -1,37 +1,75 @@
 import 'package:flutter/material.dart';
-import 'package:second/core/constant/imageassets.dart';
+import 'package:second/core/constant/app_constants.dart';
+import 'package:second/view/widget/button.dart';
+import 'package:second/view/widget/services/containt_detiales.dart';
+import 'package:second/view/widget/services/header_detelies.dart';
 
 class ServiceDetailsScreen extends StatelessWidget {
   const ServiceDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig.init(context);
+
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: AppColors.white,
       body: Stack(
         children: [
-          Container(
-            width: 500,
-            height: 300,
-            child: Image.asset(
-              ImageAsset.f4,
-              fit: BoxFit.cover,
+          // ===== BODY =====
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                const HeaderDetials(),
+                const ContaintDetiales(),
+
+                // ================= BUTTON =================
+
+                // Button(
+                //   backgroundColor: AppColors.primaryPurple,
+                //   textColor: AppColors.white,
+                //   title: "Book Now",
+                //   borderRadius: 16,
+                // ),
+              ],
             ),
           ),
 
-          /// 🔥 Gradient غامق من تحت
-          Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.bottomCenter,
-                end: Alignment.center,
-                colors: [
-                  Colors.black.withOpacity(0.6),
-                  Colors.transparent,
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Container(
+              padding: const EdgeInsets.all(15),
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    blurRadius: 10,
+                    color: Colors.black12,
+                  )
                 ],
+              ),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.primaryPurple,
+                  padding: const EdgeInsets.symmetric(vertical: 15),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                ),
+                onPressed: () {},
+                child: const Text(
+                  "Book Now",
+                  style: TextStyle(fontSize: 16),
+                ),
               ),
             ),
           ),
+          // Button(
+          //     backgroundColor: AppColors.primaryPurple,
+          //     textColor: AppColors.white,
+          //     title: "Book Now",
+          //     borderRadius: 16)
         ],
       ),
     );

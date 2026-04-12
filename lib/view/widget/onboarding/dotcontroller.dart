@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:second/controller/onboarding_controller.dart';
+import 'package:second/core/constant/app_constants.dart';
 import 'package:second/core/constant/color.dart';
 import 'package:second/data/datasource/static/static.dart';
 
@@ -24,7 +25,7 @@ class CustomDotControllerOnBoarding extends StatelessWidget {
                 height: 8,
                 decoration: BoxDecoration(
                   color: controller.currentPage == index
-                      ? AppColor.prrimaryColor.withOpacity(0.7)
+                      ? AppColors.primaryPurple.withOpacity(0.7)
                       : Colors.white.withOpacity(0.5),
                   borderRadius: BorderRadius.circular(4),
                 ),

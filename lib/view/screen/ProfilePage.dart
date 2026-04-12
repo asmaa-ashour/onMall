@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:second/core/constant/app_constants.dart';
 import 'package:second/core/constant/color.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -13,7 +14,7 @@ class ProfilePage extends StatelessWidget {
               style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: AppColor.prrimaryColor)),
+                  color: AppColors.primaryPurple)),
         ),
         body: const Center(
           child: Text("Profile"),

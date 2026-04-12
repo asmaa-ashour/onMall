@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:second/controller/area_controller.dart';
 import 'package:second/core/class/handlingdataview.dart';
+import 'package:second/core/constant/app_constants.dart';
 import 'package:second/core/constant/color.dart';
 import 'package:second/view/widget/test/area_card.dart';
 
@@ -34,7 +35,7 @@ class AreasPage extends StatelessWidget {
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                   borderSide: const BorderSide(
-                    color: AppColor.prrimaryColor, // 🔹 لون الحافة وقت التركيز
+                    color: AppColors.primaryPurple, // 🔹 لون الحافة وقت التركيز
                     width: 2, // ممكن يكون أغمق شوي أو أعرض
                   ),
                 ),

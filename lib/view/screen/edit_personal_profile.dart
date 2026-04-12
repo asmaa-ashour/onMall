@@ -1,7 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:second/core/constant/color.dart';
+import 'package:second/core/constant/app_constants.dart';
 
 class EditPersonalProfile extends StatelessWidget {
   const EditPersonalProfile({super.key});
@@ -14,7 +13,7 @@ class EditPersonalProfile extends StatelessWidget {
             style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: AppColor.prrimaryColor)),
+                color: AppColors.primaryPurple)),
       ),
       body: const Center(child: Text("Edit Personal Profile")),
     );

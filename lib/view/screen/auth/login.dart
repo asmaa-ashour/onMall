@@ -4,7 +4,9 @@ import 'package:second/controller/auth/log_in_controller.dart';
 import 'package:second/core/class/status_request.dart';
 import 'package:second/core/class/cacheClass%20.dart';
 import 'package:second/core/constant/imageassets.dart';
+import 'package:second/core/constant/routs.dart';
 import 'package:second/view/screen/home/HomePage.dart';
+import 'package:second/view/screen/home/mainNavigationScreen%20.dart';
 
 class SignInScreen extends StatelessWidget {
   final String? email; // البريد من OTP إذا موجود
@@ -128,7 +130,9 @@ class SignInScreen extends StatelessWidget {
                               // الانتقال للصفحة الرئيسية بعد تأخير بسيط
                               await Future.delayed(
                                   const Duration(milliseconds: 150));
-                              Get.offAll(() => const HomePage());
+                              Get.offAll(
+                                () => MainNavigationScreen(),
+                              );
                             } else {
                               // فشل تسجيل الدخول
                               Get.snackbar(

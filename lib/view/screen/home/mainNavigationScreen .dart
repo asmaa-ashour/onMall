@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:second/controller/home/navigatorBar.dart';
-import 'package:second/core/constant/color.dart';
+import 'package:second/core/constant/app_constants.dart';
 import 'package:second/view/screen/CartPage.dart';
-import 'package:second/view/screen/FavoritesPage.dart';
 import 'package:second/view/screen/home/HomePage.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:second/view/screen/services_and_stores/services_screen.dart';
 import 'package:second/view/screen/setting.dart';
-import 'package:second/view/screen/test/area_screen.dart';
 
 class MainNavigationScreen extends StatelessWidget {
   final BottomNavController controller = Get.put(BottomNavController());
@@ -30,9 +28,9 @@ class MainNavigationScreen extends StatelessWidget {
           index: controller.currentIndex,
           height: 60,
           backgroundColor: Colors.transparent,
-          color: AppColor.prrimaryColor,
+          color: AppColors.primaryPurple,
           // Colors.blue,
-          buttonBackgroundColor: AppColor.prrimaryColor,
+          buttonBackgroundColor: AppColors.primaryPurple,
           //Colors.blueAccent,
           animationDuration: Duration(milliseconds: 300),
           items: const [

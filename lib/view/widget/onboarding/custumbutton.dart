@@ -1,6 +1,7 @@
 import 'package:second/controller/onboarding_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:second/core/constant/app_constants.dart';
 import 'package:second/core/constant/color.dart';
 import 'package:second/view/widget/responcive_size.dart';
 
@@ -24,7 +25,7 @@ class CustomButtonOnBoarding extends GetView<OnBoardingControllerImp> {
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.white,
-          foregroundColor: AppColor.prrimaryColor,
+          foregroundColor: AppColors.primaryPurple,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),
           ),

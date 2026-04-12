@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:second/core/constant/app_constants.dart';
 import 'package:second/core/constant/color.dart';
 
 class OnBoardingOverlay extends StatelessWidget {
@@ -21,8 +22,8 @@ class OnBoardingOverlay extends StatelessWidget {
               end: Alignment.bottomCenter,
               colors: [
                 Colors.transparent,
-                AppColor.prrimaryColor.withOpacity(0.6),
-                AppColor.thirdColor.withOpacity(0.8),
+                AppColors.primaryPurple.withOpacity(0.6),
+                AppColors.thirdColor.withOpacity(0.8),
               ],
               stops: const [
                 0.5, // يبدأ من منتصف الشاشة

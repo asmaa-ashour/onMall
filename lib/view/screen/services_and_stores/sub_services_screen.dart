@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:second/core/constant/app_constants.dart';
 import 'package:second/core/constant/imageassets.dart';
+import 'package:second/core/constant/routs.dart';
 import 'package:second/data/model/service_areas_model.dart';
 import 'package:second/view/widget/services/services_card.dart';
 import 'package:second/view/widget/services/sub_Services_card.dart';
@@ -73,6 +76,8 @@ class SubServicesScreen extends StatelessWidget {
             return SubServiceCard(
               service: subServices[index],
               onTap: () {
+                Get.toNamed(AppRoute.serviceDetails,
+                    arguments: subServices[index]);
                 // هنا ممكن تفتح التفاصيل الفرعية لكل خدمة
               },
             );

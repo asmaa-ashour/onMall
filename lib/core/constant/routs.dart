@@ -20,6 +20,7 @@ class AppRoute {
   static const String setting = "/setting";
   static const String productScreen = "/productScreen";
   static const String notification = "/notification";
+  static const String serviceDetails = "/serviceDetails";
 
   /////////////////////////////////////////// قديم///////////////////////
   static const String loginOrSignUp = "/loginorsignup";

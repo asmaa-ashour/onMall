@@ -1,7 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:second/core/constant/color.dart';
+import 'package:second/core/constant/app_constants.dart';
 
 class PayScreen extends StatelessWidget {
   const PayScreen({super.key});
@@ -14,7 +13,7 @@ class PayScreen extends StatelessWidget {
             style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: AppColor.prrimaryColor)),
+                color: AppColors.primaryPurple)),
       ),
       body: const Center(child: Text("Pay Screen")),
     );

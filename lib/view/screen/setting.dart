@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:second/controller/setting_controller.dart';
+import 'package:second/core/constant/app_constants.dart';
 import 'package:second/core/constant/color.dart';
 import 'package:second/view/widget/setting.dart';
 
@@ -18,7 +19,7 @@ class Setting extends StatelessWidget {
             style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: AppColor.prrimaryColor)),
+                color: AppColors.primaryPurple)),
       ),
       body: SizedBox(
         height: 763,
